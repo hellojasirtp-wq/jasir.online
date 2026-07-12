@@ -217,10 +217,10 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Project Selector Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           
           {/* Side Tabs Selector */}
-          <div className="lg:col-span-1 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 no-scrollbar select-none">
+          <div className="lg:col-span-1 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 no-scrollbar select-none lg:sticky lg:top-8 self-start">
             {projects.map((proj, idx) => {
               const isSelected = activeProjIndex === idx;
               return (
