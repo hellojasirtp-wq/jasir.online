@@ -11,8 +11,12 @@ export const Landing: React.FC = () => {
   const [loadCanvas, setLoadCanvas] = useState(false);
 
   useEffect(() => {
-    // Delay loading the 3D WebGL canvas slightly to let the critical render path
-    // of HTML/CSS/text complete first, drastically improving FCP and LCP scores.
+    // Only load the 3D WebGL canvas on desktop viewports to optimize mobile CPU/battery
+    // and achieve a perfect mobile Lighthouse performance score.
+    if (window.innerWidth < 768) {
+      return;
+    }
+
     const timer = setTimeout(() => {
       setLoadCanvas(true);
     }, 800);
