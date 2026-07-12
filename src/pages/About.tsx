@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
+import {
   Calendar, Award, Laptop, Code, ChevronRight
 } from 'lucide-react';
 
@@ -24,7 +24,7 @@ export const About: React.FC = () => {
       color: '#FF4D8D', // Accent
     },
     {
-      year: '2018 - 2020',
+      year: '2020 - 2021',
       company: 'Talrop',
       role: 'Associate Software Engineer',
       description: 'Worked on educational SaaS tools, local logistics platforms, and core web products. Focused on clean layouts and dynamic state rendering.',
@@ -32,7 +32,7 @@ export const About: React.FC = () => {
       color: '#6C63FF', // Primary
     },
     {
-      year: '2020 - 2022',
+      year: '2021 - 2023',
       company: 'NeoITO',
       role: 'Software Engineer',
       description: 'Built scalable logistics systems, administrative control panels, and custom IoT dashboards. Spearheaded standard React state patterns.',
@@ -40,10 +40,10 @@ export const About: React.FC = () => {
       color: '#00D4FF', // Secondary
     },
     {
-      year: '2022 - Present',
+      year: '2023 - Present',
       company: 'Aufait Technologies',
       role: 'Senior Software Engineer',
-      description: 'Lead frontend architect. Design enterprise-grade platforms (City of Johannesburg, Triveni Turbine), internal UI design systems, and fast SaaS portals.',
+      description: 'Lead frontend architect. Design enterprise-grade platforms (City of Johannesburg Admin Panel, Pikitup Admin Panel, Click4Marry Portals, TTL Solver Wrapper, EmployedIn Portal, TaskFlow CRM, Triveni Turbine), internal UI design systems, and fast SaaS portals.',
       skills: ['Next.js', 'React 19', 'Three.js', 'Framer Motion', 'Zustand', 'React Query'],
       color: '#00FFB3', // Highlight
     },
@@ -58,13 +58,13 @@ export const About: React.FC = () => {
 
   return (
     <section id="about" className="relative w-full min-h-screen py-32 px-6 md:px-12 bg-bgMain overflow-hidden">
-      
+
       {/* Aurora blur circle */}
       <div className="absolute -top-40 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full filter blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-secondary/5 rounded-full filter blur-[100px] pointer-events-none" />
-      
+
       <div className="max-w-6xl mx-auto space-y-24 relative z-10">
-        
+
         {/* Title Block */}
         <div className="text-center md:text-left space-y-4">
           <motion.div
@@ -133,7 +133,7 @@ export const About: React.FC = () => {
               className="relative pl-8 md:pl-12 group"
             >
               {/* Orb node on timeline path */}
-              <div 
+              <div
                 className="absolute left-[-6px] top-1.5 w-3.5 h-3.5 rounded-full bg-bgMain border-2 transition-transform duration-300 group-hover:scale-125"
                 style={{ borderColor: item.color, boxShadow: `0 0 10px ${item.color}` }}
               />
@@ -156,12 +156,12 @@ export const About: React.FC = () => {
               {/* Description Card */}
               <div className="glass-panel p-6 rounded-2xl space-y-4 shadow-glass max-w-4xl hover:border-white/15 transition-colors">
                 <p className="text-sm text-muted leading-relaxed font-sans">{item.description}</p>
-                
+
                 {/* Tech Chips */}
                 <div className="flex flex-wrap gap-2 pt-2">
                   {item.skills.map((skill) => (
-                    <span 
-                      key={skill} 
+                    <span
+                      key={skill}
                       className="text-[10px] md:text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-muted hover:border-white/15 hover:text-white transition-colors"
                     >
                       {skill}

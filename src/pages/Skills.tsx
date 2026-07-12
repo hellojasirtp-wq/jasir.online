@@ -22,7 +22,7 @@ export const Skills: React.FC = () => {
     React: {
       name: 'React',
       years: '6+ Years',
-      projects: ['City of Johannesburg', 'OLO Portal', 'Design System SaaS', 'Triveni Turbine'],
+      projects: ['csd-admin-web-app', 'Pikitup Admin Panel', 'Click4Marry Admin', 'Click4Marry User', 'TTL Solver Wrapper', 'EmployedIn Portal', 'TaskFlow CRM', 'OLO Portal', 'Design System SaaS', 'Triveni Turbine'],
       bestPractice: 'Always pass a function callback to useState if initializing state from expensive calculations to run it lazily.',
       performanceNote: 'Leverage useMemo and useCallback strategically on component boundaries to prevent excessive child re-renders.',
       snippet: `// Optimized State Initialization
@@ -52,7 +52,7 @@ export async function DynamicPage() {
     TypeScript: {
       name: 'TypeScript',
       years: '5+ Years',
-      projects: ['City of Johannesburg', 'Triveni Turbine', 'PropertyOK', 'HappileLogistics'],
+      projects: ['csd-admin-web-app', 'Pikitup Admin Panel', 'Click4Marry Admin', 'Click4Marry User', 'TTL Solver Wrapper', 'EmployedIn Portal', 'TaskFlow CRM', 'Triveni Turbine', 'PropertyOK', 'HappileLogistics'],
       bestPractice: 'Avoid "any". Leverage Generics and utility type helpers like Record, Pick, and Partial to maintain strict type safety.',
       performanceNote: 'Use type boundaries at API response limits to ensure compiler validation of server payloads.',
       snippet: `// Type Safe API Response Helper
@@ -68,7 +68,7 @@ interface ApiResponse<T> {
     'Three.js': {
       name: 'Three.js / R3F',
       years: '2+ Years',
-      projects: ['Jasir Portfolio', 'Industrial Simulators'],
+      projects: ['TTL Solver Wrapper', 'Jasir Portfolio', 'Industrial Simulators'],
       bestPractice: 'Dispose of custom geometries and textures manually when unmounting Three.js objects to prevent GPU memory leaks.',
       performanceNote: 'Keep calculations out of useFrame callbacks. Preallocate temporary Vectors to avoid creating garbage collection sweeps.',
       snippet: `// Math allocation outside useFrame loop
@@ -83,7 +83,7 @@ useFrame((state, delta) => {
     'Framer Motion': {
       name: 'Framer Motion',
       years: '4+ Years',
-      projects: ['Design System SaaS', 'City of Johannesburg Dashboard'],
+      projects: ['Design System SaaS', 'OLO Portal'],
       bestPractice: 'Wrap conditional rendering panels inside AnimatePresence to orchestrate exit transition lifecycles.',
       performanceNote: 'Use CSS transform attributes (x, y, scale) instead of physical sizes (width, height) to trigger GPU compositor acceleration.',
       snippet: `<motion.div
@@ -98,7 +98,7 @@ useFrame((state, delta) => {
     TailwindCSS: {
       name: 'TailwindCSS',
       years: '5+ Years',
-      projects: ['City of Johannesburg', 'OLO Portal', 'Design System SaaS'],
+      projects: ['Pikitup Admin Panel', 'EmployedIn Portal', 'OLO Portal', 'Design System SaaS'],
       bestPractice: 'Configure style parameters using CSS variables in tailwind.config.js to allow easy dynamic branding changes.',
       performanceNote: 'Purge unused classes in Vite bundles to keep final CSS sizes minimal (<15KB).',
       snippet: `// tailwind.config.js

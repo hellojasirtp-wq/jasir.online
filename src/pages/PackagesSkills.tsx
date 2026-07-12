@@ -20,7 +20,7 @@ export const PackagesSkills: React.FC = () => {
       name: 'AG-Grid',
       category: 'Data Grid',
       years: '4 Years',
-      project: 'City of Johannesburg Telemetry',
+      project: 'csd-admin-web-app',
       optimization: 'Configured infinite scroll viewport virtualization to render 100k+ incident rows at 60 FPS.',
       color: '#6C63FF'
     },
@@ -36,15 +36,15 @@ export const PackagesSkills: React.FC = () => {
       name: 'Redux Toolkit',
       category: 'State & Queries',
       years: '5 Years',
-      project: 'Triveni Turbine Monitor',
-      optimization: 'Decoupled state slices using RTK Query caching triggers to intercept and cache REST APIs payloads.',
+      project: 'mployedin-frontend-web-user',
+      optimization: 'Managed multi-role session auth slices, dark/light theme state synchronizations, and masquerade triggers under nested provider trees.',
       color: '#FF4D8D'
     },
     {
       name: 'React Query',
       category: 'State & Queries',
       years: '4 Years',
-      project: 'City of Johannesburg Portal',
+      project: 'csd-pikitup-admin-web',
       optimization: 'Configured automated stale-while-revalidate query caching strategies to eliminate duplicate API requests.',
       color: '#00FFB3'
     },
@@ -60,7 +60,7 @@ export const PackagesSkills: React.FC = () => {
       name: 'Ant Design',
       category: 'UI & Styling',
       years: '4 Years',
-      project: 'Triveni Industrial telemetry',
+      project: 'csd-pikitup-admin-web',
       optimization: 'Utilized individual component import references to bypass loading the full 1.2MB component payload.',
       color: '#A855F7'
     },
@@ -95,6 +95,46 @@ export const PackagesSkills: React.FC = () => {
       project: 'PropertyOK listings web',
       optimization: 'Optimized tree shaking compiler options in rollup configurations to prune unused icon modules.',
       color: '#14B8A6'
+    },
+    {
+      name: 'Monaco Editor',
+      category: 'UI & Styling',
+      years: '2 Years',
+      project: 'ttl-solver-wrapper-web-frontend',
+      optimization: 'Loaded Monaco dynamically using local CDN fallbacks and shared configurations to maintain minimal main thread bloat.',
+      color: '#FF4D8D'
+    },
+    {
+      name: 'Three.js / WebGL',
+      category: 'UI & Styling',
+      years: '3 Years',
+      project: 'ttl-solver-wrapper-web-frontend',
+      optimization: 'Synchronized canvas frames using DOM MutationObservers for theme sync, avoiding rendering updates when hidden.',
+      color: '#00FFB3'
+    },
+    {
+      name: 'Recharts',
+      category: 'UI & Styling',
+      years: '3 Years',
+      project: 'redmine-crm-portal',
+      optimization: 'Created responsive container wrappers for dynamic chart components, implementing customized tooltips and legend filters.',
+      color: '#EC4899'
+    },
+    {
+      name: 'ApexCharts',
+      category: 'UI & Styling',
+      years: '3 Years',
+      project: 'click4marry-admn-web-frontend',
+      optimization: 'Implemented real-time reporting dashboards with synchronized dynamic zoom levels and optimized update intervals to handle live data streams.',
+      color: '#A855F7'
+    },
+    {
+      name: 'Firebase SDK',
+      category: 'State & Queries',
+      years: '4 Years',
+      project: 'click4marry-userportal-web-frontend',
+      optimization: 'Configured hybrid Firestore and RTDB streams for low-latency (<50ms) message relays and cloud notification hooks.',
+      color: '#F5820D'
     }
   ];
 

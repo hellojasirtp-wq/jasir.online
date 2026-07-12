@@ -18,11 +18,16 @@ export const Playground: React.FC = () => {
     { type: 'output', text: 'Type "help" to see available commands.' }
   ]);
   const [inputValue, setInputValue] = useState('');
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll terminal
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTo({
+        top: terminalContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   }, [terminalLines]);
 
   const handleCommand = (cmd: string) => {
@@ -104,8 +109,14 @@ export const Playground: React.FC = () => {
   const fakeCommits = [
     { sha: 'fe638d2', msg: 'feat: launch award-winning interactive portfolio UI', date: 'Just now' },
     { sha: 'b87c2e3', msg: 'style: build galaxy planetary system for skills HUD', 'date': '2h ago' },
-    { sha: '7f9c2d1', msg: 'refactor: optimize Three.js canvas WebGL context allocations', 'date': '1d ago' },
-    { sha: '8c9b2a1', msg: 'docs: finalize CityOfJohannesburg case study documentation', 'date': '2d ago' },
+    { sha: 'd4b2e6a', msg: 'fix: resolve redmine-crm-portal double-space localStorage session key quirk', 'date': '1d ago' },
+    { sha: 'a3e7b9c', msg: 'security: enforce AES-encrypted LocalStorage permission profiles in click4marry-admn-web-frontend', 'date': '2d ago' },
+    { sha: 'd8c9e4b', msg: 'feat: integrate dynamic SEO Helmet headers & robots privacy settings in click4marry-userportal-web-frontend', 'date': '3d ago' },
+    { sha: '7f9c2d1', msg: 'refactor: optimize Three.js canvas WebGL context allocations', 'date': '4d ago' },
+    { sha: '8c9b2a1', msg: 'docs: update csd-admin-web-app authentication configuration & MSAL SSO', 'date': '5d ago' },
+    { sha: '9c5a1b3', msg: 'docs: update csd-pikitup-admin-web architecture & onboarding guide', 'date': '6d ago' },
+    { sha: '5a3f1c8', msg: 'feat: integrate dxf-viewer overlay for ttl-solver-wrapper-web-frontend', 'date': '7d ago' },
+    { sha: '3d8e9f2', msg: 'refactor: implement RBAC ProtectedRoute redirects in mployedin-frontend-web-user', 'date': '8d ago' },
   ];
 
   return (
@@ -146,7 +157,10 @@ export const Playground: React.FC = () => {
             </div>
 
             {/* Terminal Logs */}
-            <div className="flex-1 overflow-y-auto p-4 font-mono text-xs md:text-sm space-y-2 bg-[#090b14]/90">
+            <div 
+              ref={terminalContainerRef}
+              className="flex-1 overflow-y-auto p-4 font-mono text-xs md:text-sm space-y-2 bg-[#090b14]/90"
+            >
               {terminalLines.map((line, idx) => (
                 <div 
                   key={idx} 
@@ -163,7 +177,7 @@ export const Playground: React.FC = () => {
                   {line.text}
                 </div>
               ))}
-              <div ref={terminalEndRef} />
+              {/* terminalEndRef removed */}
             </div>
 
             {/* Terminal Input */}

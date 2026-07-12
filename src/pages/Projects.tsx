@@ -27,39 +27,39 @@ export const Projects: React.FC = () => {
   const projects: ProjectData[] = [
     {
       id: 'city-of-joburg',
-      title: 'City of Johannesburg',
-      tagline: 'Municipal Safety & Citizen Incident SaaS Platform',
+      title: 'City of Johannesburg Admin',
+      tagline: 'Municipal Management, News, Notifications & Incident Portal',
       color: '#6C63FF',
       glowColor: 'rgba(108, 99, 255, 0.4)',
       stats: [
-        { label: 'Citizen Base', value: '1M+' },
-        { label: 'Incident Resolve Rate', value: '+45%' },
-        { label: 'Server Latency', value: '<80ms' }
+        { label: 'Modules Managed', value: '8 Modules' },
+        { label: 'Auth Channels', value: 'Dual (Standard/SSO)' },
+        { label: 'Permissions', value: 'AES Encrypted' }
       ],
-      techStack: ['React', 'TypeScript', 'React Query', 'TailwindCSS', 'Google Maps API'],
-      challenge: 'Handling real-time incident report coordinate markers for a massive metropolitan area without lag or UI blocking.',
-      solution: 'Used web workers for coordinate mapping/clustering and canvas grids instead of standard heavy DOM markers.',
-      contributions: 'Engineered the mapping interface, offline data queue sync, and citizen reporting dashboard.',
-      architecture: ['Citizen App (Mobile)', 'Admin Controller (React)', 'Geo-Worker Thread', 'DB Logger'],
-      results: 'Secured critical platform stability and drastically reduced incident response times from hours to minutes.'
+      techStack: ['React 18', 'TypeScript', 'Vite 5', 'Ant Design v5', 'Redux Toolkit', 'Sass', 'Azure MSAL', 'CryptoJS'],
+      challenge: 'Securing administrative workflows with dual SSO/Azure credentials, and enforcing a strictly encrypted local storage gate for 8 distinct module permission levels.',
+      solution: 'Integrated Microsoft MSAL Browser authentication alongside standard login, built an inactivity debounced token auto-refresher, and encrypted localStorage RBAC matrices using AES.',
+      contributions: 'Spearheaded MSAL Azure AD configuration, AuthWrapper session refreshing, AES storage permission encryption, and role-based module matrices.',
+      architecture: ['React (Vite)', 'Redux RTK Store', 'AuthWrapper guard', 'Terragrunt (AWS)'],
+      results: 'Achieved bulletproof session integrity, secure permission governance across news, ward maps, and incident reports with zero auth leakage.'
     },
     {
       id: 'pikitup',
-      title: 'Pikitup Incident Management',
-      tagline: 'Solid Waste & Operational Logistics Tracking Console',
+      title: 'Pikitup Admin Panel',
+      tagline: 'Solid Waste & Fleet Incident Management Console',
       color: '#EAB308',
       glowColor: 'rgba(234, 179, 8, 0.4)',
       stats: [
         { label: 'Truck Fleet', value: '300+' },
-        { label: 'Daily Reports', value: '5k+' },
-        { label: 'Reporting Lag', value: '0s' }
+        { label: 'Modules Gated', value: '5 Modules' },
+        { label: 'Session Refresh', value: '-5 min' }
       ],
-      techStack: ['React', 'Redux', 'Bootstrap', 'REST API Integration'],
-      challenge: 'Live dispatch coordination and route changes synchronization across unstable cellular network coverage.',
-      solution: 'Developed an optimistic state updating UI coupled with an IndexedDB storage sync adapter.',
-      contributions: 'Spearheaded the fleet tracking board and supervisor assignment dispatch modules.',
-      architecture: ['Driver Terminal API', 'Route Engine', 'Dispatcher Admin UI', 'IndexedDB Queue'],
-      results: 'Increased route compliance by 28% and reduced double-handling logistics discrepancies.'
+      techStack: ['React 18', 'TypeScript', 'Ant Design v5', 'React Query v5', 'TailwindCSS v4', 'SCSS', 'Axios', 'GSAP'],
+      challenge: 'Managing dynamic role-based access control, modular permission levels (view, edit, assign, merge), and automatic non-blocking JWT refresh cycles.',
+      solution: 'Developed custom route protection guards with permission-based module redirection and integrated scheduled auto-refresh cookie-tokens.',
+      contributions: 'Spearheaded ProtectedRoute implementation with module matrix configurations, ticket detail panels, and Terragrunt AWS Cape Town deployments.',
+      architecture: ['React Client (Vite)', 'React Query Cache', 'ProtectedRoute Guard', 'Terragrunt (AWS)'],
+      results: 'Ensured highly secure permission-gated access with zero auth regressions and automated regional cloud environment setup.'
     },
     {
       id: 'design-system',
@@ -115,24 +115,96 @@ export const Projects: React.FC = () => {
       architecture: ['React SPA (Vite)', 'Ant Design + SCSS', 'Redux Toolkit (userSlice)', 'Axios + JWT Auto-Refresh', 'AES-RBAC (crypto-js)', 'REST API Backend'],
       results: 'Delivered a scalable, permission-gated admin platform covering orders, SOS, wallets, coupons and analytics — with zero auth regressions and clean module separation for team onboarding.'
     },
+    {
+      id: 'ttl-solver',
+      title: 'TTL Solver Wrapper',
+      tagline: 'Industrial CAD Nesting & Geometry Solver Configuration Dashboard',
+      color: '#8B5CF6',
+      glowColor: 'rgba(139, 92, 246, 0.4)',
+      stats: [
+        { label: 'User Roles', value: 'RBAC (2)' },
+        { label: 'DXF Visualizer', value: 'three.js' },
+        { label: 'Editor Layout', value: 'Split Monaco' }
+      ],
+      techStack: ['React 18', 'TypeScript', 'Vite 7', 'Ant Design v5', 'React Query v5', 'Sass', 'Monaco Editor', 'three.js'],
+      challenge: 'Rendering 2D/3D CAD DXF sheet layouts dynamically in-browser and handling legacy solver configuration file encodings safely.',
+      solution: 'Built a three.js WebGL CAD renderer integrated with theme synchronization observers, split-screen Monaco tabbed views, and buffer array encoding decoders.',
+      contributions: 'Engineered split Monaco tabbed configurations editor, WebGL DXF theme-observer sync viewer overlay, and central Axios 401 automatic logout interceptors.',
+      architecture: ['React Client', 'three.js Canvas', 'Monaco Diff Editor', 'Axios Gateway'],
+      results: 'Streamlined nesting engine launching, config tweaking, DXF previews, and case comparative side-by-side run evaluations.'
+    },
+    {
+      id: 'employedin',
+      title: 'EmployedIn Portal',
+      tagline: 'AI-Powered International Recruitment SaaS Platform',
+      color: '#1D4ED8',
+      glowColor: 'rgba(29, 78, 216, 0.4)',
+      stats: [
+        { label: 'User Roles', value: '5 distinct roles' },
+        { label: 'Ant Design', value: 'v6 Componentry' },
+        { label: 'Build Tool', value: 'Vite v8 + React 19' }
+      ],
+      techStack: ['React 19', 'TypeScript', 'Vite 8', 'Ant Design v6', 'Redux Toolkit', 'React Query v5', 'TailwindCSS v4', 'SCSS'],
+      challenge: 'Unifying multi-tenant workflows for job seekers, corporate employers, regional agents, and super-agents with dynamic role-based routes and cookie-based JWT masquerading.',
+      solution: 'Structured a Redux Toolkit session store, custom Route Guards checking role permissions, dynamic Ant Design v6 theme algorithms, and Tailwind v4 utility styles.',
+      contributions: 'Engineered post-auth redirect handshakes, custom ProtectedRoute components, Redux session switcher, global Axios 401 token eject interceptors, and mock profile sandboxes.',
+      architecture: ['React SPA (Vite 8)', 'Redux RTK Store', 'React Query cache', 'Ant Design v6 Config'],
+      results: 'Delivered an interactive, lightning-fast multi-actor recruitment dashboard with unified light/dark state syncing and seamless login switching.'
+    },
+    {
+      id: 'taskflow-crm',
+      title: 'TaskFlow CRM',
+      tagline: 'Enterprise CRM Interface & Redmine Client Proxy Portal',
+      color: '#FF4D8D',
+      glowColor: 'rgba(255, 77, 141, 0.4)',
+      stats: [
+        { label: 'State Sync Key', value: '"  " (2 Spaces)' },
+        { label: 'Build Tool', value: 'Vite v6 + React 19' },
+        { label: 'Recharts', value: 'Interactive' }
+      ],
+      techStack: ['React 19', 'TypeScript', 'Vite 6', 'Redux Toolkit v2', 'React Query v5', 'TailwindCSS v3', 'Axios v1', 'Recharts'],
+      challenge: 'Transforming legacy Redmine issue trackers into a high-performance CRM interface with custom proxy APIs, path cleaners, automatic 403 token refreshment queues, and strict URL filter synchronizations.',
+      solution: 'Developed a trailing-slash URL sanitizer, integrated TanStack Query caches, configured an Axios response interceptor queuing failed 403 requests during refresh cycles, and synced search filters directly to address bar parameters.',
+      contributions: 'Engineered Redux store layers with the double-space localStorage session key quirk, Axios token-refresh queues, file upload multi-part boundaries, and Recharts analytics dashboards.',
+      architecture: ['React (Vite 6)', 'Redux Store', 'React Query hook', 'Redmine API Proxy'],
+      results: 'Delivered a modern, fluid Redmine overlay client featuring instant filtering, seamless attachment downloading, and robust background authentication integrity.'
+    },
 
     {
       id: 'click4marry',
-      title: 'Click4Marry Portal',
-      tagline: 'High-Scale Matrimonial Platform & Search Engine',
+      title: 'Click4Marry Admin',
+      tagline: 'Enterprise Matrimonial CRM, Verifications & Staff Controller',
       color: '#A855F7',
       glowColor: 'rgba(168, 85, 247, 0.4)',
       stats: [
-        { label: 'Registrations', value: '200k+' },
-        { label: 'Concurrent Users', value: '5k+' },
-        { label: 'Search Results', value: '<120ms' }
+        { label: 'Matrimony Users', value: '200k+' },
+        { label: 'Module IDs', value: '20 Modules' },
+        { label: 'Staff Roles', value: '4 Dynamic Roles' }
       ],
-      techStack: ['React', 'Redux', 'Bootstrap', 'ElasticSearch Integration'],
-      challenge: 'Compiling search outputs across thousands of complex criteria options (age, location, preferences).',
-      solution: 'Designed and bound an asynchronous query generator mapping filter states directly to optimized API calls.',
-      contributions: 'Developed the profile finder grids, chat windows, and matchmaking dashboard pages.',
-      architecture: ['Client App', 'Search Query Resolver', 'Chat WebSockets', 'Cache Store'],
-      results: 'Achieved blistering fast search speeds and increased platform user engagement by 40%.'
+      techStack: ['React 18', 'TypeScript', 'Vite 6', 'React Router v7', 'React Query v5', 'Ant Design v5', 'TailwindCSS v4', 'CryptoJS', 'ApexCharts', 'FullCalendar'],
+      challenge: 'Enforcing a strict client-side role-based routing engine and local storage permissions security layout while managing multi-step photo, identity, and coordinate coordinate verifications for thousands of users.',
+      solution: 'Configured CryptoJS AES-encryption on login configurations, established dynamic route authentication middleware verifying module-level permits (VIEW, CREATE, etc.), and built transactional verification interfaces.',
+      contributions: 'Spearheaded the secure route authorization engine, custom timezone Axios headers, telecaller performance logs, and FullCalendar scheduler boards.',
+      architecture: ['React (Vite 6)', 'React Router v7 Layout', 'AES cryptoStorage', 'ApexCharts panel'],
+      results: 'Secured administrative actions across 20 modules with zero privilege escalations and enabled smooth, visual analytics tracking for business metrics.'
+    },
+    {
+      id: 'click4marry-user',
+      title: 'Click4Marry User Portal',
+      tagline: 'Consumer Matrimonial App, Real-Time Messaging & SEO Engine',
+      color: '#EC4899',
+      glowColor: 'rgba(236, 72, 153, 0.4)',
+      stats: [
+        { label: 'Latency Msg', value: 'Real-Time RTDB' },
+        { label: 'SEO Controls', value: 'Dynamic Helmet' },
+        { label: 'Security', value: 'Right-Click Lock' }
+      ],
+      techStack: ['React 18', 'TypeScript', 'Vite 6', 'React Router v7', 'React Query v5', 'Redux Toolkit', 'Ant Design', 'Firebase v12', 'Sass', 'React Helmet Async', 'React Easy Crop'],
+      challenge: 'Maintaining real-time low-latency direct chat relays and synchronizing user inactivity token renewals while securing profile images from download theft.',
+      solution: 'Structured a hybrid Firebase setup (RTDB for chats, Firestore for threads), created an active window listener renewing expiring tokens on debounced mouse/keyboard events, and blocked contextual right-clicks on image tags.',
+      contributions: 'Developed the hybrid Firebase chat module, sitemap build generator scripts, dynamic SEO parameter route mappings, and crop-assisted onboarding stages.',
+      architecture: ['React (Vite 6)', 'Firebase RTDB/Firestore', 'SEO helmet controls', 'Custom Onboarding wizard'],
+      results: 'Boosted user retention via instantaneous chat deliveries, eliminated auth expirations during active runs, and protected user photos from theft.'
     },
     {
       id: 'property-ok',

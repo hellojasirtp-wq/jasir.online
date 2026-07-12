@@ -97,18 +97,36 @@ const PortfolioJourney: React.FC = () => {
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    let observer: IntersectionObserver | null = null;
+    let timeoutId: any;
 
-    SECTIONS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => {
+    const setupObserver = () => {
+      observer = new IntersectionObserver(observerCallback, observerOptions);
+      let allFound = true;
       SECTIONS.forEach((id) => {
         const el = document.getElementById(id);
-        if (el) observer.unobserve(el);
+        if (el) {
+          observer?.observe(el);
+        } else {
+          allFound = false;
+        }
       });
+
+      // If some sections are not loaded yet, retry setup in 100ms
+      if (!allFound) {
+        observer.disconnect();
+        timeoutId = setTimeout(setupObserver, 100);
+      }
+    };
+
+    // Delay setup slightly to let React mount elements
+    timeoutId = setTimeout(setupObserver, 200);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (observer) {
+        observer.disconnect();
+      }
     };
   }, [journeyStarted, setActiveSection]);
 

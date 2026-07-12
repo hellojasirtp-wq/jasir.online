@@ -40,31 +40,61 @@ Each file represents a significant project I engineered and delivered.
 
 Select a project file in the tree to examine core metrics, architectures, and challenges.`
     },
-    'CityOfJohannesburg.ts': {
-      name: 'CityOfJohannesburg.ts',
-      path: 'JASIR_DEV/aufait-technologies/CityOfJohannesburg.ts',
+    'csdAdminWebApp.ts': {
+      name: 'csdAdminWebApp.ts',
+      path: 'JASIR_DEV/aufait-technologies/csdAdminWebApp.ts',
       language: 'typescript',
-      content: `import { Project } from 'core/journey';
+      content: `import { AdminPortal } from 'core/municipal';
 
-export const CityOfJohannesburg: Project = {
+export const csdAdminWebApp: AdminPortal = {
   client: "City of Johannesburg Municipality",
   role: "Lead Frontend Engineer / Architect",
-  impact: "SaaS platform governing municipal safety and logistics reporting.",
+  impact: "Enterprise administrative portal for municipal wards, news, notifications, and incident reporting.",
   metrics: {
-    incidentTrackingSpeed: "+45% Efficiency",
-    activeUsersCount: "100k+ Citizen complaints handled daily",
-    uptimeGoal: "99.9%"
+    modulesCovered: "8 Major Modules",
+    loginAccess: "Dual-Channel (Standard / Azure AD SSO)",
+    securityLevel: "AES-Encrypted LocalStorage RBAC"
   },
   techStack: [
-    "React", "TypeScript", "TailwindCSS", 
-    "React Query", "Google Maps API", "Context API"
+    "React 18", "Vite 5", "Ant Design v5", "Redux Toolkit",
+    "Sass", "Axios", "Azure MSAL", "CryptoJS", "date-fns"
   ],
-  architecture: "Monorepo workspace with modular geo-tracking and lazy dashboard panels.",
-  challenges: "Handling real-time citizen-submitted incident coordinates without UI lag.",
+  architecture: "Redux-driven dashboard governed by Microsoft MSAL authorization and activity listeners.",
+  challenges: "Ensuring continuous session integrity and preventing client-side permission tampering in local storage.",
   solutions: [
-    "Implemented virtualized grid maps for heavy geospatial marker points.",
-    "Integrated web-worker clusters to handle marker clustering logic in background threads.",
-    "Engineered robust offline logging queue that syncs when network is restored."
+    "Integrated MSAL Browser SSO and credentials auth, configured with inactivity-debounced JWT auto-refreshers inside AuthWrapper.",
+    "Engineered AES encryption utilities using CryptoJS to encode localStorage RBAC permission profiles.",
+    "Created role-based module matrices covering roles, news, notification destinations, councillors, and incidents.",
+    "Configured automated non-prod and prod AWS Cape Town region deployment pipelines via Terragrunt."
+  ]
+};`
+    },
+    'csdPikitupAdminWeb.ts': {
+      name: 'csdPikitupAdminWeb.ts',
+      path: 'JASIR_DEV/aufait-technologies/csdPikitupAdminWeb.ts',
+      language: 'typescript',
+      content: `import { AdminConsole } from 'core/onboarding';
+
+export const csdPikitupAdminWeb: AdminConsole = {
+  client: "Pikitup Johannesburg",
+  role: "Senior Frontend Engineer",
+  impact: "Operational administration panel for solid waste & fleet incident management.",
+  metrics: {
+    fleetTracked: "300+ Active Trucks",
+    ticketResolution: "5k+ Daily Incident Reports",
+    authSecurity: "Two-step Client/User Sign-In"
+  },
+  techStack: [
+    "React 18", "TypeScript", "Vite 7", "Ant Design v5",
+    "TailwindCSS v4", "React Query v5", "Sass", "Axios", "GSAP"
+  ],
+  architecture: "Role-based access gated dashboard with dynamic cookie-stored JWT sessions.",
+  challenges: "Managing granular permission checks and automatic non-blocking access token refreshing.",
+  solutions: [
+    "Engineered ProtectedRoute guards synchronized with permission levels (view, edit, assign, merge) and integer module mappings.",
+    "Configured custom auto-session refresh hook scheduling silent token retrieval 5 minutes prior to JWT expiration.",
+    "Built modular components (drawers, modals, search dropdowns, charts) in Vite, optimized for light/dark display and GSAP transitions.",
+    "Established automated AWS Cape Town regional deployments using Terragrunt and encrypted S3 state backends."
   ]
 };`
     },
@@ -119,6 +149,151 @@ export const DesignSystemSaaS: UIPlatform = {
   results: [
     "Reduced new feature dev cycle by 35% across the organization.",
     "Standardized color contrast & screen-reader tags for WCAG AA compliance."
+  ]
+};`
+    },
+    'ttlSolverWrapper.ts': {
+      name: 'ttlSolverWrapper.ts',
+      path: 'JASIR_DEV/aufait-technologies/ttlSolverWrapper.ts',
+      language: 'typescript',
+      content: `import { NestingSolvers } from 'core/geometry-engines';
+
+export const ttlSolverWrapper: NestingSolvers = {
+  client: "Aufait Internal Solver Console",
+  role: "Lead Frontend Developer",
+  impact: "Management interface to configure, execute, monitor, and compare CAD sheet nesting and geometry cutting solvers.",
+  metrics: {
+    userAccessControl: "RBAC (Engineer/Admin roles)",
+    editorDesign: "Split Monaco Editor Tabs",
+    visualizerPerformance: "WebGL CAD rendering via three.js"
+  },
+  techStack: [
+    "React 18", "TypeScript", "Vite 7", "Ant Design v5",
+    "React Query v5", "Sass", "Monaco Editor", "three.js", "JSZip"
+  ],
+  architecture: "Multi-tab config editor with custom encoding detection and WebGL rendering overlays.",
+  challenges: "Displaying 2D/3D CAD drawing files directly in-browser and decoding legacy binary/text formats safely.",
+  solutions: [
+    "Integrated dxf-viewer + three.js vector engine to parse dynamic DXF layers with zoom/pan and light/dark theme matching.",
+    "Engineered robust buffer decoder utilizing smart encoding hooks for ISO-8859-1, UTF-8, and UTF-16 arrays.",
+    "Designed a split-screen side-by-side Monaco diff-editor layout for configuration and log files run comparison.",
+    "Authored centralized Axios instance with error interceptors handling immediate user token expiries."
+  ]
+};`
+    },
+    'mployedinFrontendWebUser.ts': {
+      name: 'mployedinFrontendWebUser.ts',
+      path: 'JASIR_DEV/aufait-technologies/mployedinFrontendWebUser.ts',
+      language: 'typescript',
+      content: `import { RecruitmentSaaS } from 'core/recruitment';
+
+export const mployedinFrontendWebUser: RecruitmentSaaS = {
+  client: "EmployedIn Global",
+  role: "Senior Frontend Engineer / Architect",
+  impact: "Multi-role recruitment platform connecting Job Seekers, Employers, Agents, and Super Agents.",
+  metrics: {
+    userActors: "5 Roles (GST, JS, EMP, AGT, SA)",
+    uiLibrary: "Ant Design v6 & Lucide",
+    performance: "Vite 8 + React 19 bundle compilation"
+  },
+  techStack: [
+    "React 19", "TypeScript 6", "Vite 8", "Ant Design v6",
+    "TailwindCSS v4", "Redux Toolkit", "React Query v5", "Axios", "oxlint"
+  ],
+  architecture: "Decoupled frontend layout mapping custom role-based redirects and masquerading permissions.",
+  challenges: "Orchestrating authentication state syncing, post-login redirect interception, and dynamic dark mode algorithms.",
+  solutions: [
+    "Built a React Router 7 protected layout guard utilizing user profile permission matrices.",
+    "Integrated Redux Toolkit theme slice with Ant Design token algorithms for system-wide light/dark synchronizations.",
+    "Configured custom Axios instances with request authorization injects and response auto-logout interceptors.",
+    "Designed a sandboxed mock profile login interface to test workflows (CV-parsing, auto-applying, interview preps) locally."
+  ]
+};`
+    },
+    'redmineCrmPortal.ts': {
+      name: 'redmineCrmPortal.ts',
+      path: 'JASIR_DEV/aufait-technologies/redmineCrmPortal.ts',
+      language: 'typescript',
+      content: `import { CrmProxy } from 'core/crm-integration';
+
+export const redmineCrmPortal: CrmProxy = {
+  client: "Aufait Support CRM",
+  role: "Senior React Developer",
+  impact: "Modernized Enterprise CRM interface proxying legacy Redmine ticket trackers.",
+  metrics: {
+    stateQuirk: "Double-space localStorage key ('  ')",
+    visualizer: "Recharts active analytics charts",
+    compilation: "Vite 6 + React 19 compilation"
+  },
+  techStack: [
+    "React 19", "TypeScript 5", "Vite 6", "Redux Toolkit v2",
+    "React Query v5", "TailwindCSS v3", "Axios v1", "Recharts"
+  ],
+  architecture: "URL parameter-synced search boards and Axios interceptor token refresh queue networks.",
+  challenges: "Managing legacy Redmine path trailing slashes, 403 request pauses during refresh cycles, and file download byte streams.",
+  solutions: [
+    "Configured custom apiClient request/response interceptors to catch 403 Forbidden, pause calls, refresh tokens, and replay queues.",
+    "Engineered RedmineService path sanitizers to dynamically strip '.json' structures and enforce endpoint trailing slashes.",
+    "Mapped selected workspace session state under Redux using literal double-space string ('  ') localStorage keys.",
+    "Synced TicketList filters (status, trackers, priorities) with useSearchParams hooks to support shareable URLs."
+  ]
+};`
+    },
+    'click4MarryAdmin.ts': {
+      name: 'click4MarryAdmin.ts',
+      path: 'JASIR_DEV/aufait-technologies/click4MarryAdmin.ts',
+      language: 'typescript',
+      content: `import { VerificationCRM } from 'core/crm-verification';
+
+export const click4MarryAdmin: VerificationCRM = {
+  client: "Click4Marry Matrimonial Group",
+  role: "Senior React Developer",
+  impact: "Enterprise administrative portal and RBAC controller for a 200k+ user matrimonial service.",
+  metrics: {
+    modulesProtected: "20 Module IDs",
+    verificationPipelines: "Photo, ID, coordinates validation",
+    routingEngine: "React Router v7 Route Authorization Engine"
+  },
+  techStack: [
+    "React 18", "TypeScript", "Vite 6", "React Router v7",
+    "React Query v5", "Ant Design v5", "TailwindCSS v4", "CryptoJS", "ApexCharts"
+  ],
+  architecture: "AES-encrypted localStorage storage permission structures linked to dynamic route interceptors.",
+  challenges: "Preventing manual storage manipulation of user privileges while handling multi-step physical and photo verifications.",
+  solutions: [
+    "Integrated CryptoJS AES-encryption utilizing VITE_ENCRYPTION_KEY to secure permission payloads locally.",
+    "Engineered a route permission interceptor (permissionCheck.ts) validation check covering 20 module IDs and telecaller route overrides.",
+    "Authored customized Axios timezone headers and success/error filters mapping payload state directly to React Query pipelines.",
+    "Built modular dashboard summaries utilizing interactive ApexCharts layouts and FullCalendar schedule trackers."
+  ]
+};`
+    },
+    'click4MarryUser.ts': {
+      name: 'click4MarryUser.ts',
+      path: 'JASIR_DEV/aufait-technologies/click4MarryUser.ts',
+      language: 'typescript',
+      content: `import { UserPortal } from 'core/crm-userportal';
+
+export const click4MarryUser: UserPortal = {
+  client: "Click4Marry Matrimonial Group",
+  role: "Senior React Developer",
+  impact: "Consumer-facing web portal for Life Partners search, real-time chats, and premium plans purchasing.",
+  metrics: {
+    chatLatency: "Real-time RTDB relays (<50ms)",
+    seoOptimization: "100% crawl-ready with private feeds blocked",
+    photoSecurity: "Global contextmenu lock on image theft"
+  },
+  techStack: [
+    "React 18", "Vite 6.2", "React Router DOM v7", "React Query v5",
+    "Redux Toolkit", "Ant Design", "Firebase v12", "Sass", "React Helmet Async"
+  ],
+  architecture: "Hybrid Firebase layout (Firestore configuration and RTDB messages relaying) with dynamic SEO head injections.",
+  challenges: "Managing user active token renewals on page interactions, preventing photos download theft, and building dynamic SEO heads.",
+  solutions: [
+    "Configured custom PrivateRoute listeners detecting user interactions (clicks, keyboard) to trigger useRefreshToken mutations on remaining time <= 10m.",
+    "Integrated dynamic Helmet headers querying seo-data routing matrices, automatically appending noindex/nofollow tags on private dashboards.",
+    "Established a global contextmenu block on all HTML img elements to protect customer matrimonial profile photos from download theft.",
+    "Developed a sitemap generation pre-build script compiling sitemap.xml endpoints directly to the public build directory."
   ]
 };`
     },
@@ -200,7 +375,7 @@ export const NextPortSaaS: PortLogistics = {
       const parsedLine = line
         .replace(/(\/\/.+)/g, '<span class="text-muted italic">$1</span>') // Comments
         .replace(/(import|export|const|from|return|interface|type)\b/g, '<span class="text-accent font-semibold">$1</span>') // Keywords
-        .replace(/(string|number|boolean|Project|IndustrialSaaS|Ecommerce|UIPlatform|ListingPortal|LogisticsApp|PortLogistics)\b/g, '<span class="text-secondary">$1</span>') // Types
+        .replace(/(string|number|boolean|Project|IndustrialSaaS|Ecommerce|UIPlatform|ListingPortal|LogisticsApp|PortLogistics|AdminConsole|NestingSolvers|RecruitmentSaaS|AdminPortal|CrmProxy|VerificationCRM|UserPortal)\b/g, '<span class="text-secondary">$1</span>') // Types
         .replace(/(".*?"|'.*?')/g, '<span class="text-highlight font-medium">$1</span>') // Strings
         .replace(/(\w+)(?=\s*:|\s*\?\s*:)/g, '<span class="text-primary font-medium">$1</span>') // Object keys
         .replace(/(\b\w+\b)(?=\s*\()/g, '<span class="text-indigo-300">$1</span>'); // Method calls
@@ -299,7 +474,7 @@ export const NextPortSaaS: PortLogistics = {
 
                         {openFolders.aufait && (
                           <div className="pl-4 border-l border-white/5 ml-3 mt-1 space-y-1">
-                            {['CityOfJohannesburg.ts', 'TriveniTurbine.ts', 'OLOPortal.ts', 'DesignSystemSaaS.ts'].map((fileName) => (
+                             {['csdAdminWebApp.ts', 'csdPikitupAdminWeb.ts', 'click4MarryAdmin.ts', 'click4MarryUser.ts', 'ttlSolverWrapper.ts', 'mployedinFrontendWebUser.ts', 'redmineCrmPortal.ts', 'TriveniTurbine.ts', 'OLOPortal.ts', 'DesignSystemSaaS.ts'].map((fileName) => (
                               <button 
                                 key={fileName}
                                 onClick={() => selectFile(fileName)}

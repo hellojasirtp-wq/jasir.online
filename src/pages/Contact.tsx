@@ -37,7 +37,7 @@ export const Contact: React.FC = () => {
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState('');
 
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Auto-typing sequence on load
@@ -77,7 +77,12 @@ export const Contact: React.FC = () => {
 
   // Auto scroll
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTo({
+        top: terminalContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   }, [lines]);
 
   const handleCommand = (cmd: string) => {
@@ -269,7 +274,10 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Logger list */}
-            <div className="flex-1 overflow-y-auto p-4 font-mono text-xs md:text-sm space-y-2 bg-[#05060b]/90">
+            <div 
+              ref={terminalContainerRef}
+              className="flex-1 overflow-y-auto p-4 font-mono text-xs md:text-sm space-y-2 bg-[#05060b]/90"
+            >
               {lines.map((line, idx) => (
                 <div 
                   key={idx} 
@@ -286,7 +294,7 @@ export const Contact: React.FC = () => {
                   {line.text}
                 </div>
               ))}
-              <div ref={terminalEndRef} />
+              {/* terminalEndRef removed */}
             </div>
 
             {/* Input field */}

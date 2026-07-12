@@ -23,12 +23,12 @@ export const FrontendSkills: React.FC = () => {
   const { addAchievement } = usePortfolio();
   const [showReactDeepDive, setShowReactDeepDive] = useState(false);
   const [activeTab, setActiveTab] = useState<'nextjs' | 'fiber' | 'state' | 'auth' | 'context' | 'perf'>('nextjs');
-  
+
   const skills: Record<string, Skill> = {
     React: {
       name: 'React 19 & Core',
       years: '6+ Years',
-      projects: ['City of Johannesburg', 'OLO Portal', 'Design System SaaS', 'Triveni Turbine'],
+      projects: ['csd-admin-web-app', 'Pikitup Admin Panel', 'Click4Marry Admin', 'Click4Marry User', 'TTL Solver Wrapper', 'EmployedIn Portal', 'TaskFlow CRM', 'OLO Portal', 'Design System SaaS', 'Triveni Turbine'],
       bestPractice: 'Declare state dynamically using initialization callbacks const [val, setVal] = useState(() => fetchLocalVal()) to prevent execution on re-renders.',
       performanceNote: 'Utilize custom hooks combined with useMemo to enforce rigid component boundaries and minimize paint cycles.',
       optimizationMethod: 'Implement dynamic code-splitting via React.lazy() to load non-critical path bundle chunks asynchronously.',
@@ -68,7 +68,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
     TypeScript: {
       name: 'TypeScript',
       years: '5+ Years',
-      projects: ['City of Johannesburg', 'Triveni Turbine', 'PropertyOK', 'HappileLogistics'],
+      projects: ['csd-admin-web-app', 'Pikitup Admin Panel', 'Click4Marry Admin', 'Click4Marry User', 'TTL Solver Wrapper', 'EmployedIn Portal', 'TaskFlow CRM', 'Triveni Turbine', 'PropertyOK', 'HappileLogistics'],
       bestPractice: 'Avoid utilizing the "any" type. Leverage strict generics, index signatures, and mapped type utilities to enforce type-safety.',
       performanceNote: 'Declare strict interface contracts at API boundaries to catch shape mismatches at build-time rather than runtime.',
       optimizationMethod: 'Isolate compiler type checking using fork-ts-checker plugins to accelerate development hot reload loops.',
@@ -134,12 +134,12 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
 
   return (
     <section id="frontend" className="relative w-full min-h-screen py-28 px-4 md:px-12 bg-bgMain flex flex-col justify-center overflow-hidden border-b border-white/5">
-      
+
       {/* Dynamic Background Radial */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full filter blur-[150px] pointer-events-none" />
-      
+
       <div className="max-w-6xl mx-auto w-full space-y-16 relative z-10">
-        
+
         {/* Title */}
         <div className="text-center md:text-left space-y-2">
           <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-mono text-secondary tracking-widest uppercase">
@@ -153,18 +153,18 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
 
         {/* Orbit Graph & HUD Layout */}
         <div className="flex flex-col lg:flex-row gap-12 items-center justify-between">
-          
+
           {/* Orbital nodes system */}
           <div className="relative w-[340px] h-[340px] md:w-[480px] md:h-[480px] flex items-center justify-center border border-white/5 rounded-full bg-bgMain/20 backdrop-blur-sm select-none">
-            
+
             {/* Orbits */}
             <div className="absolute w-[160px] h-[160px] md:w-[220px] md:h-[220px] rounded-full border border-white/10 opacity-30" />
             <div className="absolute w-[260px] h-[260px] md:w-[340px] md:h-[340px] rounded-full border border-white/10 opacity-20" />
             <div className="absolute w-[360px] h-[360px] md:w-[420px] md:h-[420px] rounded-full border border-white/10 opacity-10" />
 
             {/* Core Sun processor */}
-            <motion.div 
-              animate={{ 
+            <motion.div
+              animate={{
                 scale: [1, 1.05, 1],
                 boxShadow: [
                   '0 0 20px rgba(108, 99, 255, 0.4)',
@@ -183,7 +183,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
               const radian = (skill.angle * Math.PI) / 180;
               const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
               const radius = isMobile ? skill.orbitRadius * 0.7 : skill.orbitRadius;
-              
+
               const x = Math.cos(radian) * radius;
               const y = Math.sin(radian) * radius;
 
@@ -194,20 +194,19 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
                   key={skill.name}
                   onClick={() => handlePlanetClick(key)}
                   initial={{ opacity: 0, scale: 0 }}
-                  animate={{ 
-                    opacity: 1, 
-                    scale: 1, 
-                    x, 
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    x,
                     y,
                     boxShadow: isSelected ? `0 0 20px ${skill.color}` : 'none'
                   }}
                   whileHover={{ scale: 1.15 }}
                   transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-                  className={`absolute w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-mono text-[9px] md:text-[10px] font-bold text-white cursor-pointer select-none transition-all duration-300 border ${
-                    isSelected 
-                      ? 'border-white bg-bgMain z-20' 
+                  className={`absolute w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-mono text-[9px] md:text-[10px] font-bold text-white cursor-pointer select-none transition-all duration-300 border ${isSelected
+                      ? 'border-white bg-bgMain z-20'
                       : 'border-white/10 bg-bgMain/80 hover:border-white/30 z-10'
-                  }`}
+                    }`}
                   style={{ borderColor: skill.color }}
                 >
                   <span style={{ color: skill.color }}>{key.slice(0, 2).toUpperCase()}</span>
@@ -227,7 +226,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
                 transition={{ duration: 0.4 }}
                 className="glass-panel p-8 rounded-2xl space-y-6 shadow-glass relative border border-white/10"
               >
-                <div 
+                <div
                   className="absolute top-4 right-4 w-3 h-3 rounded-full animate-ping"
                   style={{ backgroundColor: activeSkill.color }}
                 />
@@ -244,7 +243,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
                 </div>
 
                 <div className="space-y-4 text-sm font-sans">
-                  
+
                   <div className="space-y-1.5">
                     <div className="text-[10px] font-mono text-muted uppercase tracking-widest flex items-center gap-1">
                       <Zap className="w-3 h-3 text-highlight" />
@@ -259,7 +258,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
                     </div>
                   </div>
 
-                   <div className="space-y-1 bg-white/5 border border-white/5 rounded-xl p-4">
+                  <div className="space-y-1 bg-white/5 border border-white/5 rounded-xl p-4">
                     <div className="text-[10px] font-mono text-highlight uppercase tracking-widest flex items-center gap-1">
                       <CheckSquare className="w-3.5 h-3.5" />
                       <span>Best Practice Pattern</span>
@@ -301,7 +300,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
                   </div>
 
                   {/* Render Code Snippet if present */}
-                  {activeSkill.snippet && (
+                  {/* {activeSkill.snippet && (
                     <div className="space-y-1">
                       <div className="text-[10px] font-mono text-secondary uppercase tracking-widest flex items-center gap-1.5">
                         <Code className="w-3.5 h-3.5" />
@@ -311,7 +310,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
                         {activeSkill.snippet}
                       </div>
                     </div>
-                  )}
+                  )} */}
 
                   {/* Render Techniques list if present */}
                   {activeSkill.techniques && (
@@ -359,7 +358,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
       <AnimatePresence>
         {showReactDeepDive && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            
+
             {/* Modal backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -377,7 +376,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
               transition={{ type: 'spring', damping: 25, stiffness: 180 }}
               className="relative w-full max-w-4xl glass-panel p-6 md:p-8 rounded-2xl border border-white/15 shadow-2xl z-10 max-h-[90vh] overflow-y-auto no-scrollbar flex flex-col gap-6"
             >
-              
+
               {/* Header */}
               <div className="flex justify-between items-start border-b border-white/5 pb-4">
                 <div className="flex items-center gap-2">
@@ -387,7 +386,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
                     <p className="text-[10px] font-mono text-muted uppercase mt-0.5">Enterprise Frontend Structuring Strategy</p>
                   </div>
                 </div>
-                <button 
+                <button
                   onClick={() => setShowReactDeepDive(false)}
                   className="p-1 rounded-full bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/15 transition-colors cursor-pointer"
                 >
@@ -410,11 +409,10 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id as any)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer border flex items-center gap-1.5 flex-shrink-0 ${
-                        isSelected 
-                          ? 'bg-primary border-primary text-white' 
+                      className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer border flex items-center gap-1.5 flex-shrink-0 ${isSelected
+                          ? 'bg-primary border-primary text-white'
                           : 'bg-white/5 border-white/5 text-muted hover:text-white hover:border-white/10'
-                      }`}
+                        }`}
                     >
                       <Icon className="w-3.5 h-3.5" />
                       <span>{tab.name}</span>
@@ -425,7 +423,7 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
 
               {/* Inner Tab Contents */}
               <div className="text-xs leading-relaxed overflow-y-auto pr-1 no-scrollbar min-h-[350px]">
-                
+
                 {/* 1. Next.js App Router */}
                 {activeTab === 'nextjs' && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono">

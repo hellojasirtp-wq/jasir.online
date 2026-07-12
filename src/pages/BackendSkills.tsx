@@ -24,7 +24,7 @@ export const BackendSkills: React.FC = () => {
     'REST APIs': {
       name: 'REST APIs & Node.js',
       years: '6+ Years',
-      projects: ['City of Johannesburg Incident API', 'Triveni Telemetry Broker'],
+      projects: ['csd-admin-web-app', 'Triveni Telemetry Broker'],
       bestPractice: 'Enforce rate-limiting, request body validation schemas, and global error handling middlewares for secure API entry.',
       performanceNote: 'Implement Redis caching layers on read-heavy database routes to reduce server query loads from seconds to milliseconds.',
       optimizationMethod: 'Utilize gzip body compression middleware and HTTP connection keep-alive headers on node handlers.',
@@ -44,7 +44,7 @@ app.post('/api/incidents', validateBody(incidentSchema), async (req, res, next) 
     'JWT Authentication': {
       name: 'JWT Auth & Security',
       years: '5 Years',
-      projects: ['OLO Restaurant POS Portal', 'NextPort Supply Dashboard'],
+      projects: ['Pikitup Admin Panel', 'EmployedIn Portal', 'Click4Marry Portals', 'OLO Restaurant POS Portal', 'NextPort Supply Dashboard'],
       bestPractice: 'Store Access Tokens in short-lived local memory, and Refresh Tokens inside secure, httpOnly cookies to prevent XSS/CSRF exploits.',
       performanceNote: 'Verify token signatures locally in server middleware without query roundtrips to database nodes.',
       optimizationMethod: 'Deploy lightweight JWT signature checks in memory without database queries by caching encryption keys.',
@@ -59,19 +59,19 @@ app.post('/api/incidents', validateBody(incidentSchema), async (req, res, next) 
       color: '#00D4FF'
     },
     'Amazon Cognito': {
-      name: 'Amazon Cognito / AWS IAM',
+      name: 'Azure AD / AWS Cognito',
       years: '3 Years',
-      projects: ['City of Johannesburg Admin portal', 'Triveni Industrial telemetry'],
-      bestPractice: 'Utilize User Pool groups to govern Role-Based Access Control (RBAC) and decouple resource access logic from backend engines.',
-      performanceNote: 'Cache ID Token verifications inside request contexts to prevent API signature processing overhead on subsequent routes.',
-      optimizationMethod: 'Verify JWT tokens locally using AWS verification libraries instead of calling remote Cognito keys endpoints.',
-      securityMethod: 'Define strict IAM role permissions maps matching user pool custom attributes (RBAC).',
-      performanceMethod: 'Deconstruct verified authentication claims into lambda context states to skip redundant decode cycles.',
+      projects: ['csd-admin-web-app', 'Triveni Industrial telemetry'],
+      bestPractice: 'Integrate Microsoft MSAL SSO for Azure AD authentication and configure client-side token refresh triggers.',
+      performanceNote: 'Utilize debounced event listeners on user interactions (clicks, keystrokes) to trigger session validations.',
+      optimizationMethod: 'Verify session integrity dynamically on routing transitions without redundant API handshakes.',
+      securityMethod: 'Encrypt localStorage permission lists using CryptoJS AES encryption key structures.',
+      performanceMethod: 'Map client-side routes dynamically using decrypted role permission lists and module matrices.',
       techniques: [
-        'AWS Cognito User Pool group mappings for granular RBAC controls.',
-        'Client-side token signature validations using aws-jwt-verify.',
-        'Custom pre-token generation triggers to map database profiles.',
-        'Cognito Identity Pool federations providing locked AWS IAM permissions.'
+        'Microsoft MSAL Browser library SSO authentication configuration.',
+        'AWS Cognito user profile integrations for municipal administrations.',
+        'CryptoJS AES encryption algorithms guarding localStorage RBAC values.',
+        'AuthWrapper event bindings intercepting automatic JWT refreshments.'
       ],
       color: '#FF4D8D'
     },

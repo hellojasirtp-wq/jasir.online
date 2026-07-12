@@ -25,17 +25,20 @@ export const Landing: React.FC = () => {
     setJourneyStarted(true);
     setActiveSection('about');
 
-    // Poll for #about to appear in DOM (lazy sections take time to mount)
-    // then scroll to it. Retry up to 15 times every 80ms (max 1.2s wait).
+    // Poll for #about and #landing to appear in DOM, then scroll.
+    // Since #landing has a height of 100vh, we scroll exactly to its height.
+    // This coordinate is fixed, preventing scroll overshooting while downstream components load/resize.
     let attempts = 0;
     const scrollToAbout = () => {
       const aboutSec = document.getElementById('about');
-      if (aboutSec) {
+      const landingSec = document.getElementById('landing');
+      if (aboutSec && landingSec) {
+        const scrollTarget = landingSec.clientHeight;
         // Snap to top first to cancel any browser scroll-restoration quirks
         window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-        // Small extra frame to let layout settle, then smooth-scroll into view
+        // Scroll to the exact position smoothly
         requestAnimationFrame(() => {
-          aboutSec.scrollIntoView({ behavior: 'smooth' });
+          window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
         });
       } else if (attempts < 15) {
         attempts++;
@@ -48,7 +51,7 @@ export const Landing: React.FC = () => {
 
   return (
     <div id="landing" className="relative w-full h-screen overflow-hidden bg-bgMain flex flex-col justify-between items-center select-none z-10">
-      
+
       {/* 3D Canvas Background */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence>
@@ -84,7 +87,7 @@ export const Landing: React.FC = () => {
         >
           JASIR<span className="text-secondary text-glow-secondary">.</span>TP
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : -20 }}
@@ -92,7 +95,7 @@ export const Landing: React.FC = () => {
           className="flex items-center gap-2 text-xs font-mono text-muted uppercase tracking-wider"
         >
           <Sparkles className="w-4 h-4 text-highlight animate-pulse" />
-          <span>v2.0.26 Production Ready</span>
+          {/* <span>v2.0.26 Production Ready</span> */}
         </motion.div>
       </div>
 
@@ -102,7 +105,7 @@ export const Landing: React.FC = () => {
           {step >= 2 && (
             <div className="space-y-6">
               {/* Logo icon animation */}
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0, rotate: -45 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 15 }}
