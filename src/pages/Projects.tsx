@@ -212,7 +212,7 @@ export const Projects: React.FC = () => {
             <span>04. FEATURED WORKS</span>
           </div>
           <h2 className="text-3xl md:text-5xl heading-premium text-white font-extrabold">
-            Cinematic Projects Showcase
+            Things I've Built
           </h2>
         </div>
 

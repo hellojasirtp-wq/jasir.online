@@ -226,10 +226,10 @@ export const NextPortSaaS: PortLogistics = {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-xs font-mono text-secondary tracking-widest uppercase">
             <ChevronRight className="w-4 h-4 text-highlight" />
-            <span>02. THE IDE EXPERIENCE</span>
+            <span>02. WORK EXPERIENCE</span>
           </div>
           <h2 className="text-3xl md:text-5xl heading-premium text-white font-extrabold">
-            Interactive Journey Explorer
+            Where I've Worked
           </h2>
         </div>
 

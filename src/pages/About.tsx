@@ -84,7 +84,7 @@ export const About: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-5xl heading-premium text-white font-extrabold"
           >
-            Career Evolution & Growth
+            My Story So Far
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

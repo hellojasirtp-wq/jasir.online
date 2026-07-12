@@ -45,10 +45,10 @@ export const DesignSystem: React.FC = () => {
         <div className="text-center md:text-left space-y-2">
           <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-mono text-secondary tracking-widest uppercase">
             <ChevronRight className="w-4 h-4 text-highlight" />
-            <span>06. DESIGN SYSTEM TOKENS</span>
+            <span>06. DESIGN SYSTEM</span>
           </div>
           <h2 className="text-3xl md:text-5xl heading-premium text-white font-extrabold">
-            Atomic Component Lab
+            Design System & UI Tokens
           </h2>
         </div>
 

@@ -135,10 +135,10 @@ theme: {
         <div className="text-center md:text-left space-y-2">
           <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-mono text-secondary tracking-widest uppercase">
             <ChevronRight className="w-4 h-4 text-highlight" />
-            <span>03. SKILLS GALAXY</span>
+            <span>03. MY SKILLS</span>
           </div>
           <h2 className="text-3xl md:text-5xl heading-premium text-white font-extrabold">
-            Interactive Orbit Graph
+            My Skills at a Glance
           </h2>
         </div>
 

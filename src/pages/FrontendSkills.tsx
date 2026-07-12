@@ -144,10 +144,10 @@ export const useLocalState = <T,>(key: string, fallback: T) => {
         <div className="text-center md:text-left space-y-2">
           <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-mono text-secondary tracking-widest uppercase">
             <ChevronRight className="w-4 h-4 text-highlight" />
-            <span>03. FRONTEND STACK</span>
+            <span>03. FRONTEND SKILLS</span>
           </div>
           <h2 className="text-3xl md:text-5xl heading-premium text-white font-extrabold">
-            Client Architecture Galaxy
+            Frontend Skills & Tools
           </h2>
         </div>
 
