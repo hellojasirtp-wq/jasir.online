@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  Terminal as TermIcon, ChevronRight, GitCommit 
+  Terminal as TermIcon, ChevronRight
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { usePortfolio } from '../context/PortfolioContext';
@@ -106,26 +106,13 @@ export const Playground: React.FC = () => {
     }
   };
 
-  const fakeCommits = [
-    { sha: 'fe638d2', msg: 'feat: launch award-winning interactive portfolio UI', date: 'Just now' },
-    { sha: 'b87c2e3', msg: 'style: build galaxy planetary system for skills HUD', 'date': '2h ago' },
-    { sha: 'd4b2e6a', msg: 'fix: resolve redmine-crm-portal double-space localStorage session key quirk', 'date': '1d ago' },
-    { sha: 'a3e7b9c', msg: 'security: enforce AES-encrypted LocalStorage permission profiles in click4marry-admn-web-frontend', 'date': '2d ago' },
-    { sha: 'd8c9e4b', msg: 'feat: integrate dynamic SEO Helmet headers & robots privacy settings in click4marry-userportal-web-frontend', 'date': '3d ago' },
-    { sha: '7f9c2d1', msg: 'refactor: optimize Three.js canvas WebGL context allocations', 'date': '4d ago' },
-    { sha: '8c9b2a1', msg: 'docs: update csd-admin-web-app authentication configuration & MSAL SSO', 'date': '5d ago' },
-    { sha: '9c5a1b3', msg: 'docs: update csd-pikitup-admin-web architecture & onboarding guide', 'date': '6d ago' },
-    { sha: '5a3f1c8', msg: 'feat: integrate dxf-viewer overlay for ttl-solver-wrapper-web-frontend', 'date': '7d ago' },
-    { sha: '3d8e9f2', msg: 'refactor: implement RBAC ProtectedRoute redirects in mployedin-frontend-web-user', 'date': '8d ago' },
-  ];
-
   return (
     <section id="playground" className="relative w-full min-h-screen py-28 px-4 md:px-12 bg-bgMain flex flex-col justify-center">
       
       {/* Decorative Blur */}
       <div className="absolute top-10 right-10 w-[300px] h-[300px] bg-accent/5 rounded-full filter blur-[100px] pointer-events-none" />
       
-      <div className="max-w-6xl mx-auto w-full space-y-12 relative z-10">
+      <div className="max-w-4xl mx-auto w-full space-y-8 relative z-10">
         
         {/* Title */}
         <div className="text-center md:text-left space-y-2">
@@ -138,11 +125,11 @@ export const Playground: React.FC = () => {
           </h2>
         </div>
 
-        {/* Dashboard Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Full Width Terminal Simulator */}
+        <div className="space-y-6">
           
-          {/* Left panel: Terminal */}
-          <div className="lg:col-span-2 flex flex-col h-[420px] rounded-xl overflow-hidden glass-panel border border-white/10 shadow-2xl">
+          {/* Terminal */}
+          <div className="w-full flex flex-col h-[420px] rounded-xl overflow-hidden glass-panel border border-white/10 shadow-2xl">
             
             {/* Terminal Header */}
             <div className="h-9 bg-bgMain flex items-center justify-between px-4 border-b border-white/10 select-none">
@@ -177,7 +164,6 @@ export const Playground: React.FC = () => {
                   {line.text}
                 </div>
               ))}
-              {/* terminalEndRef removed */}
             </div>
 
             {/* Terminal Input */}
@@ -199,58 +185,23 @@ export const Playground: React.FC = () => {
 
           </div>
 
-          {/* Right panel: Git Graph Logs */}
-          <div className="lg:col-span-1 glass-panel rounded-xl p-6 border border-white/10 flex flex-col justify-between h-[420px] shadow-2xl">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-white/5 pb-3">
-                <GitCommit className="w-5 h-5 text-secondary" />
-                <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-white">Repository Git Log</h3>
-              </div>
-              
-              {/* Commit List */}
-              <div className="space-y-4 font-mono text-xs select-none">
-                {fakeCommits.map((commit, idx) => (
-                  <div key={commit.sha} className="flex gap-3 items-start relative">
-                    {/* Vertical line connector */}
-                    {idx < fakeCommits.length - 1 && (
-                      <div className="absolute left-[7px] top-[14px] bottom-[-22px] w-[1px] bg-white/10" />
-                    )}
-
-                    {/* Commit node indicator */}
-                    <div className="w-3.5 h-3.5 rounded-full border-2 border-primary bg-bgMain mt-0.5 flex-shrink-0 flex items-center justify-center">
-                      <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                    </div>
-
-                    <div className="space-y-0.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] px-1.5 py-0.5 bg-white/5 border border-white/10 rounded text-highlight font-semibold">
-                          {commit.sha}
-                        </span>
-                        <span className="text-[10px] text-muted">{commit.date}</span>
-                      </div>
-                      <p className="text-white/80 line-clamp-1 hover:text-white transition-colors">{commit.msg}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          {/* Quick Actions Panel - Placed Neatly Below the Terminal */}
+          <div className="glass-panel rounded-xl p-4 border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl select-none">
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono text-secondary uppercase tracking-wider block">Dev Sandbox Quick Commands</span>
+              <p className="text-[11px] text-muted">Click any command to execute it instantly in the terminal simulator.</p>
             </div>
-
-            {/* Quick Actions Panel */}
-            <div className="space-y-2 pt-4 border-t border-white/5 select-none">
-              <span className="text-[10px] font-mono text-muted uppercase tracking-wider block">Dev Sandbox Quick Commands</span>
-              <div className="flex flex-wrap gap-2">
-                {['sysinfo', 'npm run dev', 'confetti', 'matrix'].map((action) => (
-                  <button
-                    key={action}
-                    onClick={() => handleCommand(action)}
-                    className="px-2.5 py-1 rounded bg-white/5 border border-white/5 hover:border-white/15 text-[10px] font-mono text-muted hover:text-white transition-all cursor-pointer active:scale-95"
-                  >
-                    {action}
-                  </button>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-2">
+              {['sysinfo', 'npm run dev', 'confetti', 'matrix'].map((action) => (
+                <button
+                  key={action}
+                  onClick={() => handleCommand(action)}
+                  className="px-3 py-1.5 rounded bg-white/5 border border-white/5 hover:border-white/15 text-[10px] font-mono text-muted hover:text-white transition-all cursor-pointer active:scale-95"
+                >
+                  {action}
+                </button>
+              ))}
             </div>
-
           </div>
 
         </div>
