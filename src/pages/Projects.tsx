@@ -99,22 +99,23 @@ export const Projects: React.FC = () => {
     },
     {
       id: 'olo',
-      title: 'OLO Restaurant Portal',
-      tagline: 'SaaS Multi-Restaurant POS & Customer Ordering Platform',
+      title: 'OLO Admin Panel',
+      tagline: 'Multi-Domain On-Demand Service & Fleet Operations Platform',
       color: '#00FFB3',
       glowColor: 'rgba(0, 255, 179, 0.4)',
       stats: [
-        { label: 'Vendors Hosted', value: '250+' },
-        { label: 'Orders Processed', value: '500k+' },
-        { label: 'Checkout Success', value: '99.9%' }
+        { label: 'Modules Managed', value: '26+' },
+        { label: 'Routes Covered', value: '40+' },
+        { label: 'Permission Levels', value: 'RBAC' }
       ],
-      techStack: ['React', 'TypeScript', 'Chakra UI', 'Stripe API', 'WhatsApp Business API'],
-      challenge: 'Synchronizing kitchen print triggers and checkout payment gateways seamlessly without double charging.',
-      solution: 'Implemented strict idempotency token parameters on transaction payloads and state locking UI.',
-      contributions: 'Engineered Stripe checkout flow, dynamic cart modifiers, and order tracking timeline.',
-      architecture: ['Vendor Dashboard', 'Client Checkout Web', 'Stripe Hook Handler', 'WhatsApp Gateway'],
-      results: 'Created a highly reliable food checkout experience and automated restaurant notifications.'
+      techStack: ['React 18', 'TypeScript', 'Vite', 'Ant Design v5', 'Redux Toolkit', 'TailwindCSS', 'SCSS', 'Axios', 'ApexCharts', 'dayjs'],
+      challenge: 'Managing a complex multi-domain admin platform — orders, SOS services, wallet payouts, coupons, analytics, and role-based access — with a single consistent and maintainable frontend architecture.',
+      solution: 'Structured the app into feature-isolated page modules with a shared API layer, AES-encrypted RBAC permissions, automatic JWT refresh interceptors, and a section-based coupon form builder pattern.',
+      contributions: 'Led frontend development of the Coupons module (create/edit/disable with merchant zone auto-computation), Wallet Management, SOS Provider workflows, and the RBAC permission gate system across all navigation items.',
+      architecture: ['React SPA (Vite)', 'Ant Design + SCSS', 'Redux Toolkit (userSlice)', 'Axios + JWT Auto-Refresh', 'AES-RBAC (crypto-js)', 'REST API Backend'],
+      results: 'Delivered a scalable, permission-gated admin platform covering orders, SOS, wallets, coupons and analytics — with zero auth regressions and clean module separation for team onboarding.'
     },
+
     {
       id: 'click4marry',
       title: 'Click4Marry Portal',
