@@ -8,6 +8,16 @@ const LandingCanvas = React.lazy(() => import('../components/three/LandingCanvas
 export const Landing: React.FC = () => {
   const { journeyStarted, setJourneyStarted, setActiveSection } = usePortfolio();
   const [step] = useState(3); // Render all elements immediately on mount to optimize LCP and Speed Index
+  const [loadCanvas, setLoadCanvas] = useState(false);
+
+  useEffect(() => {
+    // Delay loading the 3D WebGL canvas slightly to let the critical render path
+    // of HTML/CSS/text complete first, drastically improving FCP and LCP scores.
+    const timer = setTimeout(() => {
+      setLoadCanvas(true);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Enter key trigger
   useEffect(() => {
@@ -55,7 +65,7 @@ export const Landing: React.FC = () => {
       {/* 3D Canvas Background */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence>
-          {step >= 1 && !journeyStarted && (
+          {step >= 1 && !journeyStarted && loadCanvas && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
