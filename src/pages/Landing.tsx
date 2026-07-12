@@ -24,14 +24,26 @@ export const Landing: React.FC = () => {
   const handleStart = () => {
     setJourneyStarted(true);
     setActiveSection('about');
-    
-    // Scroll to the next section
-    setTimeout(() => {
+
+    // Poll for #about to appear in DOM (lazy sections take time to mount)
+    // then scroll to it. Retry up to 15 times every 80ms (max 1.2s wait).
+    let attempts = 0;
+    const scrollToAbout = () => {
       const aboutSec = document.getElementById('about');
       if (aboutSec) {
-        aboutSec.scrollIntoView({ behavior: 'smooth' });
+        // Snap to top first to cancel any browser scroll-restoration quirks
+        window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+        // Small extra frame to let layout settle, then smooth-scroll into view
+        requestAnimationFrame(() => {
+          aboutSec.scrollIntoView({ behavior: 'smooth' });
+        });
+      } else if (attempts < 15) {
+        attempts++;
+        setTimeout(scrollToAbout, 80);
       }
-    }, 100);
+    };
+    // First attempt after a brief delay for React to start rendering sections
+    setTimeout(scrollToAbout, 50);
   };
 
   return (
