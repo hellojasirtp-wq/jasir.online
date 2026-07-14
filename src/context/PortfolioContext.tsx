@@ -4,6 +4,7 @@ export type SectionType =
   | 'landing'
   | 'about'
   | 'experience'
+  | 'visibility'
   | 'frontend'
   | 'backend'
   | 'packages'

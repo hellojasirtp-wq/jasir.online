@@ -4,7 +4,7 @@ import type { SectionType } from '../../context/PortfolioContext';
 import { motion } from 'framer-motion';
 import { 
   User, Briefcase, Cpu, FolderGit, 
-  Code2, Palette, Award, Server, Package
+  Code2, Palette, Award, Server, Package, Search
 } from 'lucide-react';
 
 interface NavItem {
@@ -20,6 +20,7 @@ export const FloatingNavbar: React.FC = () => {
   const items: NavItem[] = [
     { id: 'about', label: 'Story', icon: User },
     { id: 'experience', label: 'Journey', icon: Briefcase },
+    { id: 'visibility', label: 'AI Search', icon: Search },
     { id: 'frontend', label: 'Frontend', icon: Cpu },
     { id: 'backend', label: 'Backend', icon: Server },
     { id: 'packages', label: 'Packages', icon: Package },

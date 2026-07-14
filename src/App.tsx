@@ -8,6 +8,7 @@ import { MatrixRain } from './components/common/MatrixRain';
 const Landing = lazy(() => import('./pages/Landing').then(m => ({ default: m.Landing })));
 const About = lazy(() => import('./pages/About').then(m => ({ default: m.About })));
 const Experience = lazy(() => import('./pages/Experience').then(m => ({ default: m.Experience })));
+const SearchVisibility = lazy(() => import('./pages/SearchVisibility').then(m => ({ default: m.SearchVisibility })));
 const FrontendSkills = lazy(() => import('./pages/FrontendSkills').then(m => ({ default: m.FrontendSkills })));
 const BackendSkills = lazy(() => import('./pages/BackendSkills').then(m => ({ default: m.BackendSkills })));
 const PackagesSkills = lazy(() => import('./pages/PackagesSkills').then(m => ({ default: m.PackagesSkills })));
@@ -35,6 +36,7 @@ const LoaderFallback: React.FC = () => (
 const SECTIONS: SectionType[] = [
   'about',
   'experience',
+  'visibility',
   'frontend',
   'backend',
   'packages',
@@ -192,6 +194,9 @@ const PortfolioJourney: React.FC = () => {
 
             {/* Interactive IDE mock workspace */}
             <Experience />
+
+            {/* Google Search and AI Overview rankings */}
+            <SearchVisibility />
 
             {/* 3D client galaxy frontend skills */}
             <FrontendSkills />
