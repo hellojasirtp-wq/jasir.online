@@ -4,7 +4,7 @@ import type { SectionType } from '../../context/PortfolioContext';
 import { motion } from 'framer-motion';
 import { 
   User, Briefcase, Cpu, FolderGit, 
-  Code2, Palette, Award, Server, Package, Search
+  Code2, Palette, Award, Server, Package, Search, GraduationCap
 } from 'lucide-react';
 
 interface NavItem {
@@ -26,6 +26,7 @@ export const FloatingNavbar: React.FC = () => {
     { id: 'packages', label: 'Packages', icon: Package },
     { id: 'projects', label: 'Works', icon: FolderGit },
     { id: 'playground', label: 'Playground', icon: Code2 },
+    { id: 'curriculum', label: 'Curriculum', icon: GraduationCap },
     { id: 'design-system', label: 'UI System', icon: Palette },
   ];
 

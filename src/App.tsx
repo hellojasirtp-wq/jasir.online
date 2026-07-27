@@ -15,6 +15,7 @@ const PackagesSkills = lazy(() => import('./pages/PackagesSkills').then(m => ({ 
 const Projects = lazy(() => import('./pages/Projects').then(m => ({ default: m.Projects })));
 const Playground = lazy(() => import('./pages/Playground').then(m => ({ default: m.Playground })));
 const DesignSystem = lazy(() => import('./pages/DesignSystem').then(m => ({ default: m.DesignSystem })));
+const Curriculum = lazy(() => import('./pages/Curriculum').then(m => ({ default: m.Curriculum })));
 const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
 const Footer = lazy(() => import('./components/common/Footer').then(m => ({ default: m.Footer })));
 const HelpOverlay = lazy(() => import('./components/common/HelpOverlay').then(m => ({ default: m.HelpOverlay })));
@@ -42,6 +43,7 @@ const SECTIONS: SectionType[] = [
   'packages',
   'projects',
   'playground',
+  'curriculum',
   'design-system'
 ];
 
@@ -212,6 +214,9 @@ const PortfolioJourney: React.FC = () => {
 
             {/* Interactive Terminal Sandbox */}
             <Playground />
+
+            {/* Curriculum visualizer */}
+            <Curriculum />
 
             {/* UI Components lab */}
             <DesignSystem />

@@ -10,6 +10,7 @@ export type SectionType =
   | 'packages'
   | 'projects'
   | 'playground'
+  | 'curriculum'
   | 'design-system';
 
 interface TerminalLog {
