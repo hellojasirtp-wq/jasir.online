@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Boxes, RefreshCw, Zap, FileText, ArrowLeft, 
-  Sparkles, Download, ShieldCheck, Cpu
+  Sparkles, Download, ShieldCheck, Cpu,
+  Palette, GraduationCap, Terminal as TerminalIcon
 } from 'lucide-react';
 import { FolderStructureExplainer } from '../components/learn/FolderStructureExplainer';
 import { EventLoopSimulator } from '../components/learn/EventLoopSimulator';
@@ -10,9 +11,21 @@ import { React19Explainer } from '../components/learn/React19Explainer';
 import { FiberConcurrencyExplainer } from '../components/learn/FiberConcurrencyExplainer';
 import { AccessibilityLab } from '../components/learn/AccessibilityLab';
 import { ResumeViewer } from '../components/learn/ResumeViewer';
+import { StorybookExplorer } from '../components/learn/StorybookExplorer';
+import { Curriculum } from './Curriculum';
+import { Playground } from './Playground';
 import { downloadResumePdf } from '../utils/pdfGenerator';
 
-export type LearnTab = 'folder' | 'event-loop' | 'react-19' | 'fiber' | 'a11y' | 'cv';
+export type LearnTab = 
+  | 'folder' 
+  | 'event-loop' 
+  | 'react-19' 
+  | 'fiber' 
+  | 'storybook'
+  | 'curriculum'
+  | 'playground'
+  | 'a11y' 
+  | 'cv';
 
 interface LearnProps {
   onBackToHome?: () => void;
@@ -27,8 +40,11 @@ export const Learn: React.FC<LearnProps> = ({ onBackToHome }) => {
     { id: 'event-loop', label: 'Event Loop Engine', icon: RefreshCw, badge: 'Visual Runtime', keyHint: '2' },
     { id: 'react-19', label: 'React 19 Deep Dive', icon: Zap, badge: 'v19 Innovations', keyHint: '3' },
     { id: 'fiber', label: 'Fiber & Concurrency', icon: Cpu, badge: 'Time-Slicing Lab', keyHint: '4' },
-    { id: 'a11y', label: 'Accessibility (a11y) Lab', icon: ShieldCheck, badge: 'WCAG 2.2', keyHint: '5' },
-    { id: 'cv', label: 'CV & Resume Download', icon: FileText, badge: 'PDF Ready', keyHint: '6' },
+    { id: 'storybook', label: 'Storybook & UI System', icon: Palette, badge: 'Tokens & Props', keyHint: '5' },
+    { id: 'curriculum', label: 'Curriculum & Concepts', icon: GraduationCap, badge: 'Syllabus & Fiber', keyHint: '6' },
+    { id: 'playground', label: 'Code Playground', icon: TerminalIcon, badge: 'Sandbox & Matrix', keyHint: '7' },
+    { id: 'a11y', label: 'Accessibility Lab', icon: ShieldCheck, badge: 'WCAG 2.2', keyHint: '8' },
+    { id: 'cv', label: 'CV & Resume Download', icon: FileText, badge: 'PDF Ready', keyHint: '9' },
   ];
 
   // Listen to URL hash for deep linking
@@ -41,6 +57,12 @@ export const Learn: React.FC<LearnProps> = ({ onBackToHome }) => {
         setActiveTab('react-19');
       } else if (hash.includes('fiber') || hash.includes('concurrency')) {
         setActiveTab('fiber');
+      } else if (hash.includes('storybook') || hash.includes('design') || hash.includes('ui')) {
+        setActiveTab('storybook');
+      } else if (hash.includes('curriculum') || hash.includes('syllabus')) {
+        setActiveTab('curriculum');
+      } else if (hash.includes('playground') || hash.includes('terminal')) {
+        setActiveTab('playground');
       } else if (hash.includes('a11y') || hash.includes('accessibility')) {
         setActiveTab('a11y');
       } else if (hash.includes('cv') || hash.includes('resume')) {
@@ -55,13 +77,13 @@ export const Learn: React.FC<LearnProps> = ({ onBackToHome }) => {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
-  // Keyboard navigation across tabs: 1-6 number shortcuts & Alt+C for CV download
+  // Keyboard navigation across tabs: 1-9 number shortcuts & Alt+C for CV download
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const tag = (document.activeElement?.tagName || '').toLowerCase();
       if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
 
-      if (e.key >= '1' && e.key <= '6') {
+      if (e.key >= '1' && e.key <= '9') {
         const idx = parseInt(e.key) - 1;
         if (idx >= 0 && idx < tabs.length) {
           handleTabSelect(tabs[idx].id);
@@ -173,8 +195,8 @@ export const Learn: React.FC<LearnProps> = ({ onBackToHome }) => {
           {/* Keyboard Helper Badge */}
           <div className="flex flex-wrap items-center gap-2 pt-1 text-xs font-mono text-muted">
             <span>Keyboard Shortcuts:</span>
-            <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-secondary">Keys [1 - 6]</span>
-            <span>Switch Tabs |</span>
+            <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-secondary">Keys [1 - 9]</span>
+            <span>Switch Modules |</span>
             <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-highlight">Alt + C</span>
             <span>Instant Download CV</span>
           </div>
@@ -184,7 +206,7 @@ export const Learn: React.FC<LearnProps> = ({ onBackToHome }) => {
         <div 
           role="tablist" 
           aria-label="Learning Modules"
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 p-2 rounded-2xl glass-panel border border-white/10 shadow-glass"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 gap-2 p-2 rounded-2xl glass-panel border border-white/10 shadow-glass"
         >
           {tabs.map((tab, idx) => {
             const Icon = tab.icon;
@@ -201,7 +223,7 @@ export const Learn: React.FC<LearnProps> = ({ onBackToHome }) => {
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => handleTabSelect(tab.id)}
                 onKeyDown={(e) => handleTabKeyDown(e, idx)}
-                className={`relative px-3.5 py-3 rounded-xl flex flex-col items-start justify-between gap-1 text-left transition-all cursor-pointer select-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:outline-none ${
+                className={`relative px-3 py-2.5 rounded-xl flex flex-col items-start justify-between gap-1 text-left transition-all cursor-pointer select-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:outline-none ${
                   isActive
                     ? 'bg-gradient-to-r from-primary/30 to-secondary/20 border border-secondary/50 text-white shadow-neon-secondary'
                     : 'hover:bg-white/5 text-muted hover:text-white border border-transparent'
@@ -212,9 +234,9 @@ export const Learn: React.FC<LearnProps> = ({ onBackToHome }) => {
                   <span className="text-[10px] font-mono opacity-50 font-bold">[{tab.keyHint}]</span>
                 </div>
 
-                <span className="text-xs font-semibold leading-tight mt-1">{tab.label}</span>
+                <span className="text-xs font-semibold leading-tight mt-1 line-clamp-1">{tab.label}</span>
 
-                <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded mt-1 ${
+                <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded mt-1 line-clamp-1 ${
                   isActive ? 'bg-secondary/30 text-secondary font-bold' : 'bg-white/5 text-muted/80'
                 }`}>
                   {tab.badge}
@@ -251,6 +273,17 @@ export const Learn: React.FC<LearnProps> = ({ onBackToHome }) => {
               {activeTab === 'event-loop' && <EventLoopSimulator />}
               {activeTab === 'react-19' && <React19Explainer />}
               {activeTab === 'fiber' && <FiberConcurrencyExplainer />}
+              {activeTab === 'storybook' && <StorybookExplorer />}
+              {activeTab === 'curriculum' && (
+                <div className="glass-panel rounded-2xl border border-white/10 p-4 md:p-8">
+                  <Curriculum />
+                </div>
+              )}
+              {activeTab === 'playground' && (
+                <div className="glass-panel rounded-2xl border border-white/10 p-4 md:p-8">
+                  <Playground />
+                </div>
+              )}
               {activeTab === 'a11y' && <AccessibilityLab />}
               {activeTab === 'cv' && <ResumeViewer />}
             </motion.div>

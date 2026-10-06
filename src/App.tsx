@@ -13,9 +13,6 @@ const FrontendSkills = lazy(() => import('./pages/FrontendSkills').then(m => ({ 
 const BackendSkills = lazy(() => import('./pages/BackendSkills').then(m => ({ default: m.BackendSkills })));
 const PackagesSkills = lazy(() => import('./pages/PackagesSkills').then(m => ({ default: m.PackagesSkills })));
 const Projects = lazy(() => import('./pages/Projects').then(m => ({ default: m.Projects })));
-const Playground = lazy(() => import('./pages/Playground').then(m => ({ default: m.Playground })));
-const DesignSystem = lazy(() => import('./pages/DesignSystem').then(m => ({ default: m.DesignSystem })));
-const Curriculum = lazy(() => import('./pages/Curriculum').then(m => ({ default: m.Curriculum })));
 const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
 const Learn = lazy(() => import('./pages/Learn').then(m => ({ default: m.Learn })));
 const Footer = lazy(() => import('./components/common/Footer').then(m => ({ default: m.Footer })));
@@ -43,9 +40,7 @@ const SECTIONS: SectionType[] = [
   'backend',
   'packages',
   'projects',
-  'playground',
-  'curriculum',
-  'design-system'
+  'contact'
 ];
 
 const PortfolioJourney: React.FC = () => {
@@ -232,15 +227,6 @@ const PortfolioJourney: React.FC = () => {
 
             {/* Cinematic project details */}
             <Projects />
-
-            {/* Interactive Terminal Sandbox */}
-            <Playground />
-
-            {/* Curriculum visualizer */}
-            <Curriculum />
-
-            {/* UI Components lab */}
-            <DesignSystem />
 
             {/* Terminal CLI mailer */}
             <Contact />

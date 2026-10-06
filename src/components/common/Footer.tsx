@@ -147,11 +147,6 @@ export const Footer: React.FC = () => {
               <span>Top</span>
             </a>
           </div>
-          
-          <div className="flex items-center gap-1.5 text-[10px] text-white/30">
-            <Award className="w-3.5 h-3.5 text-accent" />
-            <span>Achievements Unlocked: {achievements.length}</span>
-          </div>
 
         </div>
 

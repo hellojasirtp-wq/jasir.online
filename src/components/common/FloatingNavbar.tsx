@@ -4,7 +4,7 @@ import type { SectionType } from '../../context/PortfolioContext';
 import { motion } from 'framer-motion';
 import { 
   User, Briefcase, Cpu, FolderGit, 
-  Code2, Palette, Award, Server, Package, Search, GraduationCap,
+  Server, Package, Search, Mail,
   Download, BookOpen
 } from 'lucide-react';
 import { downloadResumePdf } from '../../utils/pdfGenerator';
@@ -20,7 +20,6 @@ export const FloatingNavbar: React.FC = () => {
     journeyStarted, 
     activeSection, 
     setActiveSection, 
-    achievements, 
     currentRoute, 
     navigateToRoute 
   } = usePortfolio();
@@ -34,9 +33,7 @@ export const FloatingNavbar: React.FC = () => {
     { id: 'backend', label: 'Backend', icon: Server },
     { id: 'packages', label: 'Packages', icon: Package },
     { id: 'projects', label: 'Works', icon: FolderGit },
-    { id: 'playground', label: 'Playground', icon: Code2 },
-    { id: 'curriculum', label: 'Curriculum', icon: GraduationCap },
-    { id: 'design-system', label: 'UI System', icon: Palette },
+    { id: 'contact', label: 'Contact', icon: Mail },
   ];
 
   const handleNavClick = (id: SectionType) => {
@@ -154,18 +151,6 @@ export const FloatingNavbar: React.FC = () => {
         <Download className="w-3.5 h-3.5 text-secondary" />
         <span className="hidden sm:inline">CV</span>
       </button>
-
-      {/* Achievement Indicator Badge */}
-      {achievements.length > 0 && (
-        <div 
-          role="status"
-          aria-label={`${achievements.length} portfolio achievements unlocked`}
-          className="flex items-center gap-1 bg-accent/20 border border-accent/40 rounded-full px-2 py-0.5 text-[10px] text-accent font-semibold ml-1 select-none flex-shrink-0 animate-pulse"
-        >
-          <Award className="w-3 h-3" />
-          <span>{achievements.length}</span>
-        </div>
-      )}
     </motion.nav>
   );
 };
