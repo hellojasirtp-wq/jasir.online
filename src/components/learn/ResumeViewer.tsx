@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { 
-  Download, Printer, Check, Copy, 
+  Download, Printer, Check, Copy, ExternalLink,
   Mail, Phone, MapPin, Briefcase, GraduationCap, 
   Code2, Sparkles, Globe
 } from 'lucide-react';
 import { RESUME_DATA } from '../../utils/resumeData';
-import { downloadResumePdf } from '../../utils/pdfGenerator';
+import { downloadResumePdf, openResumePdf } from '../../utils/pdfGenerator';
 import confetti from 'canvas-confetti';
 
 export const ResumeViewer: React.FC = () => {
@@ -82,11 +82,20 @@ export const ResumeViewer: React.FC = () => {
             <span>Download CV (PDF)</span>
           </button>
 
+          {/* Open in Tab Button */}
+          <button
+            onClick={openResumePdf}
+            className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-muted hover:text-white transition-all cursor-pointer"
+            title="Open Jasir_TP_2026_Oct.pdf in new tab"
+          >
+            <ExternalLink className="w-4 h-4" />
+          </button>
+
           {/* Direct Print Button */}
           <button
-            onClick={handleDownload}
+            onClick={openResumePdf}
             className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-muted hover:text-white transition-all cursor-pointer"
-            title="Print CV"
+            title="Print CV PDF"
           >
             <Printer className="w-4 h-4" />
           </button>
