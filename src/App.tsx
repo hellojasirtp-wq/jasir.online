@@ -17,6 +17,7 @@ const Playground = lazy(() => import('./pages/Playground').then(m => ({ default:
 const DesignSystem = lazy(() => import('./pages/DesignSystem').then(m => ({ default: m.DesignSystem })));
 const Curriculum = lazy(() => import('./pages/Curriculum').then(m => ({ default: m.Curriculum })));
 const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
+const Learn = lazy(() => import('./pages/Learn').then(m => ({ default: m.Learn })));
 const Footer = lazy(() => import('./components/common/Footer').then(m => ({ default: m.Footer })));
 const HelpOverlay = lazy(() => import('./components/common/HelpOverlay').then(m => ({ default: m.HelpOverlay })));
 
@@ -48,11 +49,11 @@ const SECTIONS: SectionType[] = [
 ];
 
 const PortfolioJourney: React.FC = () => {
-  const { journeyStarted, activeSection, setActiveSection } = usePortfolio();
+  const { journeyStarted, activeSection, setActiveSection, currentRoute, navigateToRoute } = usePortfolio();
 
   // Initialize Lenis Smooth Scroll dynamically to avoid blocking critical bundle load
   useEffect(() => {
-    if (!journeyStarted) return;
+    if (!journeyStarted || currentRoute === 'learn') return;
 
     let lenisInstance: any;
 
@@ -78,11 +79,11 @@ const PortfolioJourney: React.FC = () => {
         lenisInstance.destroy();
       }
     };
-  }, [journeyStarted]);
+  }, [journeyStarted, currentRoute]);
 
   // Scroll Spy Observer to dynamically highlight navbar links
   useEffect(() => {
-    if (!journeyStarted) return;
+    if (!journeyStarted || currentRoute === 'learn') return;
 
     const observerOptions = {
       root: null, // viewport
@@ -132,11 +133,11 @@ const PortfolioJourney: React.FC = () => {
         observer.disconnect();
       }
     };
-  }, [journeyStarted, setActiveSection]);
+  }, [journeyStarted, setActiveSection, currentRoute]);
 
   // Keyboard Navigation: Listen for arrows and section jumps
   useEffect(() => {
-    if (!journeyStarted) return;
+    if (!journeyStarted || currentRoute === 'learn') return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       // Ignore key hits if user is typing inside code inputs or shell console text areas
@@ -171,7 +172,19 @@ const PortfolioJourney: React.FC = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [journeyStarted, activeSection, setActiveSection]);
+  }, [journeyStarted, activeSection, setActiveSection, currentRoute]);
+
+  // If on /learn route, render the dedicated Learn Knowledge Hub
+  if (currentRoute === 'learn') {
+    return (
+      <div className="relative w-full bg-bgMain text-white min-h-screen">
+        <MatrixRain />
+        <Suspense fallback={<LoaderFallback />}>
+          <Learn onBackToHome={() => navigateToRoute('portfolio')} />
+        </Suspense>
+      </div>
+    );
+  }
 
   return (
     <div className={`relative w-full bg-bgMain text-white ${!journeyStarted ? 'h-screen overflow-hidden' : 'min-h-screen'}`}>
