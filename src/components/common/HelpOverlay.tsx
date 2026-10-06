@@ -38,12 +38,12 @@ export const HelpOverlay: React.FC = () => {
   const sections = [
     { name: '1. Story', desc: 'Core career timeline, timeline milestones & statistics dashboard.' },
     { name: '2. Journey', desc: 'Interactive VS Code code explorer listing project typescript configurations.' },
-    { name: '3. Frontend', desc: 'Dynamic client-side galaxy orbits (React 19, Next.js, TS).' },
-    { name: '4. Backend', desc: 'APIs control boards and security routing parameters (REST, Auth, Cognito).' },
-    { name: '5. Packages', desc: 'An Ag-Grid styled comparative table detailing UI libraries optimization tips.' },
-    { name: '6. Works', desc: 'A cinematic slides deck mapping case studies, results, and challenges.' },
-    { name: '7. Playground', desc: 'Interactive console terminals where users write logs & test CLI commands.' },
-    { name: '8. UI System', desc: 'Showroom of components tokens, buttons, inputs, and popups.' }
+    { name: '3. AI Search', desc: 'Live Google & AI Search ranking visibility metrics & SEO index.' },
+    { name: '4. Frontend', desc: 'Dynamic client-side galaxy orbits (React 19, Next.js, TS).' },
+    { name: '5. Backend', desc: 'APIs control boards and security routing parameters (REST, Auth, Cognito).' },
+    { name: '6. Packages', desc: 'An Ag-Grid styled comparative table detailing UI libraries optimization tips.' },
+    { name: '7. Works', desc: 'A cinematic slides deck mapping case studies, results, and challenges.' },
+    { name: '8. Contact', desc: 'Interactive terminal CLI mailer to send messages and connect directly.' }
   ];
 
   return (

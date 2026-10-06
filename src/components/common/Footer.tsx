@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Rocket, Heart, ArrowUp, Award } from 'lucide-react';
+import { Rocket, Heart, ArrowUp } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { usePortfolio } from '../../context/PortfolioContext';
 
 export const Footer: React.FC = () => {
-  const { journeyStarted, achievements, addAchievement } = usePortfolio();
+  const { journeyStarted, addAchievement } = usePortfolio();
   const [rocketLaunched, setRocketLaunched] = useState(false);
 
   const handleRocketLaunch = () => {

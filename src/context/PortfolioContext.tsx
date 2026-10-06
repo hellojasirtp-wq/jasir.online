@@ -9,9 +9,7 @@ export type SectionType =
   | 'backend'
   | 'packages'
   | 'projects'
-  | 'playground'
-  | 'curriculum'
-  | 'design-system';
+  | 'contact';
 
 interface TerminalLog {
   type: 'input' | 'output' | 'error' | 'success';
