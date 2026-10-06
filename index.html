@@ -2,10 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Favicon & Icons -->
+    <!-- Favicon & Icons for all Platforms & Google Search Crawler -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- SEO Optimization -->
@@ -17,7 +19,7 @@
     <meta name="theme-color" content="#050816" />
     <meta name="color-scheme" content="dark" />
 
-    <!-- Structured Data (JSON-LD) for Search Engines & AI Assistants -->
+    <!-- Structured Data (JSON-LD) for Search Engines, Sitelinks & AI Assistants -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -34,7 +36,7 @@
             "name": "Aufait Technologies"
           },
           "url": "https://jasir.online",
-          "image": "https://jasir.online/favicon.svg",
+          "image": "https://jasir.online/favicon-192.png",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Calicut",
@@ -68,6 +70,89 @@
             "@id": "https://jasir.online/#person"
           },
           "description": "Interactive portfolio, CV download, and interactive React 19 & JavaScript visual learning hub."
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://jasir.online/#sitelinks",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "Learn Hub (React 19 & Event Loop)",
+              "description": "Interactive visualizer for React 19 features and JavaScript Event Loop internals",
+              "url": "https://jasir.online/#/learn"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "Download Jasir's CV",
+              "description": "Official resume and technical experience curriculum vitae PDF of Jasir T P",
+              "url": "https://jasir.online/Jasir_TP_2026_Oct.pdf"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "Engineering Projects",
+              "description": "Featured SaaS applications, UI libraries, and full-stack systems",
+              "url": "https://jasir.online/#projects"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Career Journey & Experience",
+              "description": "6+ years career milestones, Aufait Technologies leadership, and architectural capabilities",
+              "url": "https://jasir.online/#experience"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "Frontend Architecture",
+              "description": "React, Next.js, Three.js, performance optimization, and clean architecture",
+              "url": "https://jasir.online/#frontend"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 6,
+              "name": "Backend & Cloud Architecture",
+              "description": "Node.js, GraphQL, PostgreSQL, Microservices, and Cloud deployments",
+              "url": "https://jasir.online/#backend"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 7,
+              "name": "Open Source Packages",
+              "description": "NPM libraries, tools, and open-source contributions",
+              "url": "https://jasir.online/#packages"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 8,
+              "name": "Interactive Code Playground",
+              "description": "Interactive code experiments, live state visualizers, and algorithms",
+              "url": "https://jasir.online/#playground"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 9,
+              "name": "Curriculum & Education",
+              "description": "Academic foundation, certifications, and developer pedagogy",
+              "url": "https://jasir.online/#curriculum"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 10,
+              "name": "UI Design System",
+              "description": "Design tokens, glassmorphism components, and responsive typography",
+              "url": "https://jasir.online/#design-system"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 11,
+              "name": "Contact & Connect",
+              "description": "Direct email, LinkedIn, and collaboration inquiry channels",
+              "url": "https://jasir.online/#contact"
+            }
+          ]
         }
       ]
     }
