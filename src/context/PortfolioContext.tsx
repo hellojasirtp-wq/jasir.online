@@ -18,11 +18,16 @@ interface TerminalLog {
   text: string;
 }
 
+export type RouteType = 'portfolio' | 'learn';
+
 interface PortfolioContextType {
   journeyStarted: boolean;
   setJourneyStarted: (started: boolean) => void;
   activeSection: SectionType;
   setActiveSection: (section: SectionType) => void;
+  currentRoute: RouteType;
+  setCurrentRoute: (route: RouteType) => void;
+  navigateToRoute: (route: RouteType, hash?: string) => void;
   devMode: boolean;
   setDevMode: (active: boolean) => void;
   matrixActive: boolean;
@@ -41,6 +46,7 @@ const PortfolioContext = createContext<PortfolioContextType | undefined>(undefin
 export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [journeyStarted, setJourneyStarted] = useState(false);
   const [activeSection, setActiveSection] = useState<SectionType>('landing');
+  const [currentRoute, setCurrentRoute] = useState<RouteType>('portfolio');
   const [devMode, setDevMode] = useState(false);
   const [matrixActive, setMatrixActive] = useState(false);
   const [achievements, setAchievements] = useState<string[]>([]);
@@ -48,6 +54,37 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const [terminalLogs, setTerminalLogs] = useState<TerminalLog[]>([
     { type: 'output', text: 'System initialized. Enter commands or type "help".' }
   ]);
+
+  // Sync route on initial load and browser navigation
+  useEffect(() => {
+    const handleUrlRoute = () => {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      if (path === '/learn' || path.startsWith('/learn') || hash.startsWith('#/learn') || hash.startsWith('#learn')) {
+        setCurrentRoute('learn');
+        setJourneyStarted(true);
+      } else {
+        setCurrentRoute('portfolio');
+      }
+    };
+
+    handleUrlRoute();
+    window.addEventListener('popstate', handleUrlRoute);
+    window.addEventListener('hashchange', handleUrlRoute);
+    return () => {
+      window.removeEventListener('popstate', handleUrlRoute);
+      window.removeEventListener('hashchange', handleUrlRoute);
+    };
+  }, []);
+
+  const navigateToRoute = (route: RouteType, hash?: string) => {
+    setCurrentRoute(route);
+    const targetUrl = route === 'learn' ? `/learn${hash ? `#${hash}` : ''}` : `/${hash ? `#${hash}` : ''}`;
+    window.history.pushState({}, '', targetUrl);
+    if (route === 'learn') {
+      setJourneyStarted(true);
+    }
+  };
 
   const addAchievement = (name: string) => {
     if (!achievements.includes(name)) {
@@ -103,6 +140,9 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       setJourneyStarted,
       activeSection,
       setActiveSection,
+      currentRoute,
+      setCurrentRoute,
+      navigateToRoute,
       devMode,
       setDevMode,
       matrixActive,

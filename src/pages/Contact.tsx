@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Terminal as TermIcon, ChevronRight, Mail, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { usePortfolio } from '../context/PortfolioContext';
+import { downloadResumePdf } from '../utils/pdfGenerator';
 
 const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -383,7 +384,7 @@ export const Contact: React.FC = () => {
             {/* Resume download */}
             <div 
               onClick={() => {
-                alert('Resume download triggered (Mock)');
+                downloadResumePdf();
                 addAchievement('Resume Downloaded');
               }}
               className="flex items-center justify-between p-4 rounded-xl glass-panel border border-white/5 hover:border-white/15 text-white/80 hover:text-white transition-all cursor-pointer group"

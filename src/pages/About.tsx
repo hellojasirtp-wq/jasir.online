@@ -173,6 +173,38 @@ export const About: React.FC = () => {
           ))}
         </div>
 
+        {/* Quick Links Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="p-6 md:p-8 rounded-2xl glass-panel border border-primary/30 flex flex-wrap items-center justify-between gap-6 shadow-neon-primary"
+        >
+          <div className="space-y-1">
+            <h3 className="text-lg md:text-xl font-bold text-white flex items-center gap-2">
+              Deep Dive into Architecture & Runtimes
+            </h3>
+            <p className="text-xs md:text-sm text-gray-300">
+              Explore interactive visual explanations for Frontend Structure, Event Loop, React 19, and Jasir's complete CV.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="/learn"
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', '/learn');
+                window.dispatchEvent(new PopStateEvent('popstate'));
+              }}
+              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-xs tracking-wider uppercase shadow-neon-primary hover:scale-105 transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <span>Explore /learn</span>
+              <span>→</span>
+            </a>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

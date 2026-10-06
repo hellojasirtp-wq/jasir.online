@@ -121,18 +121,32 @@ export const Footer: React.FC = () => {
         {/* Actions panel */}
         <div className="flex flex-col items-center md:items-end gap-3">
           
-          {/* Scroll back to top */}
-          <a
-            href="#about"
-            onClick={(e) => {
-              e.preventDefault();
-              handleScrollTop();
-            }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/5 bg-white/3 hover:bg-white/5 hover:border-white/10 text-white font-medium text-xs cursor-pointer active:scale-95 transition-all"
-          >
-            <ArrowUp className="w-4 h-4 text-secondary" />
-            <span>Scroll to Top</span>
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href="/learn"
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', '/learn');
+                window.dispatchEvent(new PopStateEvent('popstate'));
+              }}
+              className="px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 hover:bg-primary/20 text-secondary font-medium text-xs cursor-pointer transition-all"
+            >
+              Visual Learn Hub (/learn)
+            </a>
+
+            {/* Scroll back to top */}
+            <a
+              href="#about"
+              onClick={(e) => {
+                e.preventDefault();
+                handleScrollTop();
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/5 bg-white/5 hover:bg-white/10 text-white font-medium text-xs cursor-pointer active:scale-95 transition-all"
+            >
+              <ArrowUp className="w-3.5 h-3.5 text-secondary" />
+              <span>Top</span>
+            </a>
+          </div>
           
           <div className="flex items-center gap-1.5 text-[10px] text-white/30">
             <Award className="w-3.5 h-3.5 text-accent" />
