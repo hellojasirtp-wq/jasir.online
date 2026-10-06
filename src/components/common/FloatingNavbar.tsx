@@ -61,7 +61,8 @@ export const FloatingNavbar: React.FC = () => {
   if (!journeyStarted) return null;
 
   return (
-    <motion.div 
+    <motion.nav 
+      aria-label="Main Navigation"
       initial={{ x: "-50%", y: -100, opacity: 0 }}
       animate={{ x: "-50%", y: 0, opacity: 1 }}
       transition={{ duration: 1, ease: 'easeOut' }}
@@ -70,6 +71,7 @@ export const FloatingNavbar: React.FC = () => {
       {/* Mini Logo */}
       <a 
         href="#landing"
+        aria-label="Back to top landing section"
         onClick={(e) => {
           e.preventDefault();
           if (currentRoute === 'learn') {
@@ -92,6 +94,7 @@ export const FloatingNavbar: React.FC = () => {
           <a
             key={item.id}
             aria-label={item.label}
+            aria-current={isActive ? 'true' : undefined}
             href={`#${item.id}`}
             onClick={(e) => {
               e.preventDefault();
@@ -129,6 +132,7 @@ export const FloatingNavbar: React.FC = () => {
 
       {/* Dedicated /learn Route Button */}
       <button
+        aria-label="Navigate to Learn Knowledge Hub"
         onClick={() => navigateToRoute('learn')}
         className={`relative px-3 md:px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 flex items-center gap-1.5 flex-shrink-0 select-none cursor-pointer ${
           currentRoute === 'learn'
@@ -142,7 +146,8 @@ export const FloatingNavbar: React.FC = () => {
 
       {/* Direct CV Download Action */}
       <button
-        onClick={downloadResumePdf}
+        aria-label="Download Jasir's Resume CV PDF"
+        onClick={() => downloadResumePdf()}
         title="Download Jasir's CV PDF"
         className="px-2.5 py-1.5 rounded-full text-xs font-medium text-muted hover:text-white bg-white/5 hover:bg-white/10 transition-all flex items-center gap-1 flex-shrink-0 cursor-pointer"
       >
@@ -152,11 +157,15 @@ export const FloatingNavbar: React.FC = () => {
 
       {/* Achievement Indicator Badge */}
       {achievements.length > 0 && (
-        <div className="flex items-center gap-1 bg-accent/20 border border-accent/40 rounded-full px-2 py-0.5 text-[10px] text-accent font-semibold ml-1 select-none flex-shrink-0 animate-pulse">
+        <div 
+          role="status"
+          aria-label={`${achievements.length} portfolio achievements unlocked`}
+          className="flex items-center gap-1 bg-accent/20 border border-accent/40 rounded-full px-2 py-0.5 text-[10px] text-accent font-semibold ml-1 select-none flex-shrink-0 animate-pulse"
+        >
           <Award className="w-3 h-3" />
           <span>{achievements.length}</span>
         </div>
       )}
-    </motion.div>
+    </motion.nav>
   );
 };

@@ -188,6 +188,14 @@ const PortfolioJourney: React.FC = () => {
 
   return (
     <div className={`relative w-full bg-bgMain text-white ${!journeyStarted ? 'h-screen overflow-hidden' : 'min-h-screen'}`}>
+      {/* Skip to Content for keyboard and screen reader accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-full focus:shadow-neon-primary focus:outline-none"
+      >
+        Skip to main content
+      </a>
+
       {/* Background Matrix digital rain overlay */}
       <MatrixRain />
 
@@ -203,7 +211,7 @@ const PortfolioJourney: React.FC = () => {
 
         {/* Render the rest of the journey only after starting */}
         {journeyStarted && (
-          <div className="w-full flex flex-col">
+          <main id="main-content" tabIndex={-1} className="w-full flex flex-col focus:outline-none">
             {/* Main Story & Stats */}
             <About />
 
@@ -239,7 +247,7 @@ const PortfolioJourney: React.FC = () => {
 
             {/* Launch pad rocket footer */}
             <Footer />
-          </div>
+          </main>
         )}
       </Suspense>
     </div>

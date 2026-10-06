@@ -1,5 +1,29 @@
 import { RESUME_DATA } from './resumeData';
 
+export const RESUME_PDF_PATH = '/Jasir_TP_2026_Oct.pdf';
+export const RESUME_FILE_NAME = 'Jasir_TP_2026_Oct.pdf';
+
+/**
+ * Downloads the official CV PDF file (Jasir_TP_2026_Oct.pdf)
+ */
+export const downloadResumePdf = () => {
+  const link = document.createElement('a');
+  link.href = RESUME_PDF_PATH;
+  link.setAttribute('download', RESUME_FILE_NAME);
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+/**
+ * Opens the PDF directly in a new browser tab
+ */
+export const openResumePdf = () => {
+  window.open(RESUME_PDF_PATH, '_blank', 'noopener,noreferrer');
+};
+
 export const generateResumeHtml = (): string => {
   const r = RESUME_DATA;
 
@@ -197,21 +221,4 @@ export const generateResumeHtml = (): string => {
 </body>
 </html>
 `;
-};
-
-export const downloadResumePdf = () => {
-  const html = generateResumeHtml();
-  const blob = new Blob([html], { type: 'text/html' });
-  const url = URL.createObjectURL(blob);
-  
-  const printWindow = window.open(url, '_blank');
-  if (!printWindow) {
-    // Fallback if popup blocked: trigger direct html download
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Jasir_TP_Resume.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
 };
