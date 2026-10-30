@@ -131,7 +131,19 @@ export const Footer: React.FC = () => {
               }}
               className="px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 hover:bg-primary/20 text-secondary font-medium text-xs cursor-pointer transition-all"
             >
-              Visual Learn Hub (/learn)
+              Learn Hub
+            </a>
+
+            <a
+              href="/check"
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', '/check');
+                window.dispatchEvent(new PopStateEvent('popstate'));
+              }}
+              className="px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 hover:bg-accent/20 text-accent font-medium text-xs cursor-pointer transition-all"
+            >
+              Security /check
             </a>
 
             {/* Scroll back to top */}

@@ -32,6 +32,7 @@ export const HelpOverlay: React.FC = () => {
     { key: '↑ / →', desc: 'Scroll up / next section.' },
     { key: '↓ / ←', desc: 'Scroll down / previous section.' },
     { key: 'h', desc: 'Toggle this interactive Help HUD Guide.' },
+    { key: '/check', desc: 'URL Security Scanner & Browser Tab Isolation Lab.' },
     { key: 'Konami', desc: '↑ ↑ ↓ ↓ ← → ← → B A unlocks Developer matrix theme!' }
   ];
 

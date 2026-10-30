@@ -16,7 +16,7 @@ interface TerminalLog {
   text: string;
 }
 
-export type RouteType = 'portfolio' | 'learn';
+export type RouteType = 'portfolio' | 'learn' | 'check';
 
 interface PortfolioContextType {
   journeyStarted: boolean;
@@ -61,6 +61,9 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       if (path === '/learn' || path.startsWith('/learn') || hash.startsWith('#/learn') || hash.startsWith('#learn')) {
         setCurrentRoute('learn');
         setJourneyStarted(true);
+      } else if (path === '/check' || path.startsWith('/check') || hash.startsWith('#/check') || hash.startsWith('#check')) {
+        setCurrentRoute('check');
+        setJourneyStarted(true);
       } else {
         setCurrentRoute('portfolio');
       }
@@ -77,9 +80,14 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   const navigateToRoute = (route: RouteType, hash?: string) => {
     setCurrentRoute(route);
-    const targetUrl = route === 'learn' ? `/learn${hash ? `#${hash}` : ''}` : `/${hash ? `#${hash}` : ''}`;
+    const targetUrl = 
+      route === 'learn' 
+        ? `/learn${hash ? `#${hash}` : ''}` 
+        : route === 'check'
+        ? `/check${hash ? `#${hash}` : ''}`
+        : `/${hash ? `#${hash}` : ''}`;
     window.history.pushState({}, '', targetUrl);
-    if (route === 'learn') {
+    if (route === 'learn' || route === 'check') {
       setJourneyStarted(true);
     }
   };

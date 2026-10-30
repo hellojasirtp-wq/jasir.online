@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { 
   User, Briefcase, Cpu, FolderGit, 
   Server, Package, Search, Mail,
-  Download, BookOpen
+  Download, BookOpen, Shield
 } from 'lucide-react';
 import { downloadResumePdf } from '../../utils/pdfGenerator';
 
@@ -37,7 +37,7 @@ export const FloatingNavbar: React.FC = () => {
   ];
 
   const handleNavClick = (id: SectionType) => {
-    if (currentRoute === 'learn') {
+    if (currentRoute === 'learn' || currentRoute === 'check') {
       navigateToRoute('portfolio');
       setTimeout(() => {
         const element = document.getElementById(id);
@@ -71,7 +71,7 @@ export const FloatingNavbar: React.FC = () => {
         aria-label="Back to top landing section"
         onClick={(e) => {
           e.preventDefault();
-          if (currentRoute === 'learn') {
+          if (currentRoute === 'learn' || currentRoute === 'check') {
             navigateToRoute('portfolio');
           } else {
             handleNavClick('landing');
@@ -139,6 +139,20 @@ export const FloatingNavbar: React.FC = () => {
       >
         <BookOpen className="w-3.5 h-3.5 text-highlight" />
         <span>Learn Hub</span>
+      </button>
+
+      {/* Dedicated /check Route Button */}
+      <button
+        aria-label="Navigate to URL Security Scanner"
+        onClick={() => navigateToRoute('check')}
+        className={`relative px-3 md:px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 flex items-center gap-1.5 flex-shrink-0 select-none cursor-pointer ${
+          currentRoute === 'check'
+            ? 'bg-gradient-to-r from-accent to-primary text-white shadow-neon-accent'
+            : 'bg-accent/15 hover:bg-accent/25 text-accent border border-accent/30'
+        }`}
+      >
+        <Shield className="w-3.5 h-3.5 text-accent" />
+        <span>/check</span>
       </button>
 
       {/* Direct CV Download Action */}

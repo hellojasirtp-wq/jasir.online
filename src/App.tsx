@@ -15,6 +15,7 @@ const PackagesSkills = lazy(() => import('./pages/PackagesSkills').then(m => ({ 
 const Projects = lazy(() => import('./pages/Projects').then(m => ({ default: m.Projects })));
 const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
 const Learn = lazy(() => import('./pages/Learn').then(m => ({ default: m.Learn })));
+const SecurityCheck = lazy(() => import('./pages/SecurityCheck').then(m => ({ default: m.SecurityCheck })));
 const Footer = lazy(() => import('./components/common/Footer').then(m => ({ default: m.Footer })));
 const HelpOverlay = lazy(() => import('./components/common/HelpOverlay').then(m => ({ default: m.HelpOverlay })));
 
@@ -48,7 +49,7 @@ const PortfolioJourney: React.FC = () => {
 
   // Initialize Lenis Smooth Scroll dynamically to avoid blocking critical bundle load
   useEffect(() => {
-    if (!journeyStarted || currentRoute === 'learn') return;
+    if (!journeyStarted || currentRoute === 'learn' || currentRoute === 'check') return;
 
     let lenisInstance: any;
 
@@ -78,7 +79,7 @@ const PortfolioJourney: React.FC = () => {
 
   // Scroll Spy Observer to dynamically highlight navbar links
   useEffect(() => {
-    if (!journeyStarted || currentRoute === 'learn') return;
+    if (!journeyStarted || currentRoute === 'learn' || currentRoute === 'check') return;
 
     const observerOptions = {
       root: null, // viewport
@@ -132,7 +133,7 @@ const PortfolioJourney: React.FC = () => {
 
   // Keyboard Navigation: Listen for arrows and section jumps
   useEffect(() => {
-    if (!journeyStarted || currentRoute === 'learn') return;
+    if (!journeyStarted || currentRoute === 'learn' || currentRoute === 'check') return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       // Ignore key hits if user is typing inside code inputs or shell console text areas
@@ -176,6 +177,18 @@ const PortfolioJourney: React.FC = () => {
         <MatrixRain />
         <Suspense fallback={<LoaderFallback />}>
           <Learn onBackToHome={() => navigateToRoute('portfolio')} />
+        </Suspense>
+      </div>
+    );
+  }
+
+  // If on /check route, render the URL Security Scanner & Tab Isolation Lab
+  if (currentRoute === 'check') {
+    return (
+      <div className="relative w-full bg-bgMain text-white min-h-screen">
+        <MatrixRain />
+        <Suspense fallback={<LoaderFallback />}>
+          <SecurityCheck onBackToHome={() => navigateToRoute('portfolio')} />
         </Suspense>
       </div>
     );
